@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JS modul rendszer</h1>
+    
+    <!-- meg kell adni a type="module"-t, mert használom a module system-et (export, import) -->
+    <script type="module" src="./main.js">
+//      így is működne, de mindig válasszuk el a js-t a html-től
+/*      import {sumValues, shuffle} from './utils.js';
+        (function(){
+            const names = ['Józsi', 'Piri','Jani'];
+            console.log(shuffle(names));
+        })();
+        console.log(sumValues(10,20));    
+ */        
+    </script>
+</body>
+</html>

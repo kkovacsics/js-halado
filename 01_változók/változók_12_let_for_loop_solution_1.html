@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="click-me">Click me PLEASE!</button>
+    <button class="click-me">Click me PLEASE!</button>
+    <button class="click-me">Click me PLEASE!</button>
+
+    <script>
+        'use strict';
+
+        function clickHandler(i){
+            elements[i].addEventListener('click', function(){
+                console.log('item: ' + i);
+            });
+        }
+
+        var elements = document.querySelectorAll('.click-me');
+        for (var i = 0; i < elements.length; i++) {
+            clickHandler(i);    // ez lefut, és a paramétereit adja tovább (0,1,2)
+            // nem az i ciklus utáni értékét használja
+        }
+        
+    </script>
+</body>
+</html>

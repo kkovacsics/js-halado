@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // hogyan tudunk egy tömbből egyszerűen kiszedni értékeket
+        const arr = [1, 2, 3, 4];
+        const [a, b, c] = arr;
+        console.log(a,b,c);     // 1 2 3
+
+        const [aa, bb, , dd] = arr;    // elemeket ki is lehet hagyni
+        console.log(aa,bb,dd);     // 1 2 4
+    </script>
+</body>
+</html>

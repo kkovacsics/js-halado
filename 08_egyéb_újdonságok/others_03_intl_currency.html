@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+/*
+    Intl: Internationalization API
+    egy adott nyelvnek megfelelő pénz, dátum, számformátum használata
+    illetve az adott nyelvnek megfelelő ABC sorrend
+*/
+        // ISO szabvány szerinti kell a nyelvet megadni
+        const usCurrency = new Intl.NumberFormat('en-US', { 
+            style: 'currency',
+            currency: 'USD'
+        });
+        const gbCurrency = new Intl.NumberFormat('en-GB', {
+            style: 'currency',
+            currency: 'GBP'
+        });
+        const deCurrency = new Intl.NumberFormat('de-DE', {
+            style: 'currency',
+            currency: 'EUR'
+        });
+        const huCurrency = new Intl.NumberFormat('hu-HU');
+
+        console.log(usCurrency.format(100200300.45));
+        console.log(gbCurrency.format(100200300.45));
+        console.log(deCurrency.format(100200300.45));
+        console.log(huCurrency.format(100200300.45)+'Ft');
+    </script>
+</body>
+</html>

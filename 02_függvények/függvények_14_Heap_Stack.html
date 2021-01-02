@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        console.log('Global code');
+
+        function one(){
+            console.log('function "one" is running');
+            two();
+        }
+
+        function two(){
+            console.log('function "two" is running');
+            three();
+        }
+
+        function three(){
+            console.log('function "three" is running');
+        }
+
+        one();
+/*
+ a memória terület két fő részre van osztva
+    - Heap: itt tárolódnak az objektumok
+        mérete: window.performance.memory
+        
+    - Stack: a primitívek vannak itt tárolva
+        plusz itt vannak a futó fv -k is (execution context stack)
+        global(), one(), two(), three()
+        ahogy egymás után hívódnak meg a fv-ek, úgy kerülnek be a stack-be (LIFO)
+        minden fv-nek van egy excution context-je 
+        execution context: az a környezet, ami tartalmaz mindent, ami a kód (a fv) futásához szükséges
+
+Lexical Environment: fizikálisan a kódunk hol található
+2 fontos dolog van benne
+ - Environment Record: minden változó és fv deklaráció itt van
+ - reference to an outer Lexical Environment
+*/
+    </script>
+</body>
+</html>

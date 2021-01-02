@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+/*
+    Intl: Internationalization API
+    egy adott nyelvnek megfelelő pénz, dátum, számformátum használata
+    illetve az adott nyelvnek megfelelő ABC sorrend
+*/
+        const now = new Date();
+
+        console.log(new Intl.DateTimeFormat('hu-HU').format(now));  // "2020. 12. 22."
+        console.log(new Intl.DateTimeFormat('en-US').format(now));  // "12/22/2020"
+    </script>
+</body>
+</html>

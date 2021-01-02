@@ -1,0 +1,16 @@
+{
+"users": [
+            {
+                "name": "Chris Griffin",
+                "age": 16
+            },
+            {
+                "name": "Lois Griffin",
+                "age": 36
+            },
+            {
+                "name": "Peter Griffin",
+                "age": 42
+            }
+        ]
+}

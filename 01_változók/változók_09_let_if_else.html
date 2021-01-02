@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        
+        let value = 1;
+        if(value === 1){
+            let result = true;
+        } else {
+            let result = false;
+        }
+        // a result csak a blokkon belül él
+        try { console.log(result);    // ReferenceError: result is not defined
+        } catch(e) { console.error(e)}
+
+        // megoldás: a result-ot blokkon kívül kell deklarálni
+        let result;
+        if(value === 1){
+            result = true;
+        } else {
+            result = false;
+        }
+        console.log(result);    // true
+    </script>
+</body>
+</html>

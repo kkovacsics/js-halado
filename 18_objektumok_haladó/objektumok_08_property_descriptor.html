@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // property descriptor: a tulajdonságok tulajdonságai
+
+        const user = {
+            name: 'John Doe',
+        }
+
+        console.log(Object.getOwnPropertyDescriptor(user, 'name'));
+/*
+configurable: true      => törölhető-e
+enumerable: true        => iterációban megjelenik-e
+value: "John Doe"       => a tulajdonság értéke
+writable: true          => a tulajdonság írható-e (módosítható-e)
+*/        
+        // ha a fenti módon hozom létre a property-t, akkor a default értékek true-k
+
+        // tulajdonság létrehozás descriptor megadással
+        Object.defineProperty(user, 'firstName', {
+            value: 'John',
+        })
+        // ha defineProperty-vel hozom létre, akkor a leírók default értéke false
+        console.log(Object.getOwnPropertyDescriptor(user, 'firstName'));
+        // {value: "John", writable: false, enumerable: false, configurable: false}
+        try {
+            user.firstName = 'Jane';  // writable?
+        } catch(e) {console.error(e)};// TypeError: Cannot assign to read only property 'firstName' of object '#<Object>' 
+        console.log(Object.keys(user)); // ["name"] (enumerable ?)
+        try {
+            delete user.firstName;      // configurable?
+        } catch(e) {console.error(e)};// TypeError: Cannot delete property 'firstName' of #<Object>
+
+        // getter/setter használata defineProperty-vel
+        try {
+            Object.defineProperty(user, 'firstName', {
+                value: 'John',
+                writeable: true,
+                configurable: true,
+                enumerable: true,
+                get(){},
+                set(){},
+            });
+        } catch(e) {console.error(e);}// TypeError: Invalid property descriptor. 
+        // Cannot both specify accessors and a value or writable attribute, #<Object>
+
+
+        Object.defineProperty(user, 'lastName', {
+            configurable: true,
+            enumerable: true,
+            get(){
+                return this.name.split(' ')[1];
+            },
+            set(value){
+                this.name = `${this.name.split(' ')[0]} ${value}`;
+            },
+        });
+        console.log(user.lastName); // Doe
+        user.lastName = 'Doedoe';
+        console.log(user.lastName); // Doedoe
+
+    </script>
+</body>
+</html>

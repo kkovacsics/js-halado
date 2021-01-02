@@ -1,0 +1,16 @@
+{
+"users": [
+            {
+                "name": "Johnny Firpo",
+                "age": 28
+            },
+            {
+                "name": "Charlie Firpo",
+                "age": 35
+            },
+            {
+                "name": "Papi Firpo",
+                "age": 62
+            }
+        ]
+}

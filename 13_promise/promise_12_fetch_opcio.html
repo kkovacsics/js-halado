@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // fetch-nél sokkal egyszerübb a header-ek és az opciók megadása
+
+        // bár milyen HTTP fejlécet megadhatunk itt
+        const fetchHeader = new Headers({
+            'Content-Type': 'application/json'
+        });
+
+        // tömbként is meg lehet adni
+        // const fetchHeader = new Headers([
+        //     ['Content-Type', 'application/json']
+        // ]);
+
+        const fetchOptions = {
+            method: 'GET',
+            headers: fetchHeader,
+            mode: 'cors',           // eltérő domainek alól engedélyezem a kérést
+            cache: 'no-cache'
+        };
+
+        const result = fetch("./data.json", fetchOptions);
+        result
+            .then((data) => data.json())
+            .then((data) => console.log(data.users));
+    </script>
+</body>
+</html>

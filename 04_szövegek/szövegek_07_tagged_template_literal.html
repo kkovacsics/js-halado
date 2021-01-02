@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            age: 30
+        }
+
+        const tag = (texts, ...values) => console.log(texts, values);
+
+        tag`My name is ${user.firstName} ${user.lastName}, and I'm ${user.age} years old.`;
+/*
+texts: a string literalok lesznek a tömb elemei
+0: "My name is "
+1: " "
+2: ", and I'm "
+3: " years old."
+
+values: tömbösítve érem el a literálban megadott JS kifejezések értékeit
+0: "John"
+1: "Doe"
+2: 30
+*/
+        tag`simple literal`;    // ["simple literal"], [] - a values tömb üres
+
+
+        const tag2 = (texts, ...values) => 
+                texts.map((text, index) =>
+                    `${text}${values[index] ? `<strong>${values[index].toString().toLocaleUpperCase()}</strong>`: ''}`
+                ).join('');
+                // a toString()-et bele kellett tenni, mert az age az number
+        const template = tag2`My name is ${user.firstName} ${user.lastName}, and I'm ${user.age} years old.`;
+        document.body.innerHTML = template;
+    </script>
+</body>
+</html>

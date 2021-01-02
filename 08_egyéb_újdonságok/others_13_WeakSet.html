@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+/*
+    WeakSet: a tárolt értékek csak obj-ek lehetnek
+    ez is csak gyenge referanciát tárol
+    csak add(), get(), delete(), has() metódusai vannak, size property sincs
+*/
+        let language = {
+            name: 'perl'
+        };
+        const weakLanguages = new WeakSet();
+        weakLanguages.add(language);
+
+        language = null;               // törlöm az obj-t, a gyenge referencia miatt a WeakSet-ből is törlődik
+        console.log(weakLanguages.has(language));   // false
+
+    </script>
+</body>
+</html>

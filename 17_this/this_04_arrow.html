@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            speek: () => {
+                console.log(this);      // a this nem bind-olja a this-t, a parent object-ből veszi a this-t
+                // a user object parentje a window, így this=window
+                // ezért metódus soha nem legyen arrow fv !!!
+            },
+            speek2(){
+                console.log(this);      // normál metódus, a this az obj-ra mutat (user)
+                const logger = () => {
+                    console.log(this);  // a speek2() this-ét örökli az arrow fv, azaz this=user :) 
+                }
+                logger();
+            }
+        }
+        user.speek2();       // user
+
+
+        // régi megoldás, hogy a metóduson belüli fv-ben is használhassuk a "this"-t
+        const user2 = {
+            firstName: 'John',
+            lastName: 'Doe',
+            speek(){
+                const self = this;      // itt még a this a user2-re mutat
+                function logger() {
+                    console.log(self);
+                }
+                logger();
+            }
+        }
+        user2.speek();       // user2
+
+        // de erre már nincs szükség, metóduson belül használjunk arrow fv-t, amiben a this "tovább él"
+
+    </script>
+</body>
+</html> 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // rest paraméter átadás - nem tudom előre, hogy hány paramétert kap a fv
+        // arguments object volt erre régen használható, de nem elegáns
+        function restParameter(x, y, ...z){
+            console.log(x,y,z);
+        }
+        restParameter(1,2,3);   // 1 2 [3] - 1 elemű tömb
+        restParameter(1,2,3,4,5,6);   // 1 2 [3, 4, 5, 6] - a maradék paraméterek egy tömbbe kerülnek
+        // ez igazi tömb, nem úgy, mint az arguments, ami csak egy array-like obj
+        // arguments: a propertyk = 0,1,2,3, számok, mintha egy tömb indexei lennének, van length property is
+        // de nem tudok meghívni rajta tömb metódusokat
+    </script>
+</body>
+</html>

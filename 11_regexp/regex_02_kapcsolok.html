@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        // kapcsolók (i - case insensitive, g - global, m - multiline)
+        const pattern = /AB/ig;
+        const text = 'abraka dabra';
+        console.log(pattern.exec(text));    // global-nál ez csak az első találatot adja vissza
+        console.log(pattern.exec(text));    // az előző találat utáni következő találatot adja vissza
+        console.log(text.match(pattern));   // egy tömbben az összes találat
+    </script>
+</body>
+</html>

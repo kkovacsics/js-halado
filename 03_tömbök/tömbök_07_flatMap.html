@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // flatMap(): flat() + map() egyben
+
+        const numericArray = [1,2,3,4,5];
+        // legyen egy új tömb, amiben benne van maga az elem, a négyzete és a köbe
+        const exponentialFlatArray = numericArray
+            .map(item => [item, item**2, item**3])
+            .flat();    // csak 1 dimenziót kell megszüntetni, ez pedig a default
+        console.log(exponentialFlatArray);     // [1, 1, 1, 2, 4, 8, 3, 9, 27, 4, 16, 64, 5, 25, 125]
+
+        // egyszerűbben flatMap()-pel
+        const exponentialFlatArray2 = numericArray
+            .flatMap(item => [item, item**2, item**3])
+            .flat();    // csak 1 dimenziót kell megszüntetni, ez pedig a default
+        console.log(exponentialFlatArray2);     // [1, 1, 1, 2, 4, 8, 3, 9, 27, 4, 16, 64, 5, 25, 125]
+
+    </script>
+</body>
+
+</html>

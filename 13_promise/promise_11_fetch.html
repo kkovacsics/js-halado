@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        if(false){
+            // régi módszer XMLHttpRequest objecttel
+            function request(url, callback){
+                const xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = () => {
+                    if(xhr.readyState === 4 && xhr.status === 200){
+                        callback(xhr.responseText);
+                    }
+                };
+                xhr.open('GET', url, true);
+                xhr.send();
+            }
+            function callback(result){
+                const users = JSON.parse(result).users;
+                console.log(users);
+            }
+            request('./data.json', callback);
+        } else {
+            // és a fetch (teljes mértékben egyenértékü a fenti módszerel, csak sokkal rövidebb)
+            const result = fetch("./data.json");    // a fetch promise-t ad vissza
+            result
+                .then((data) => data.json())
+                .then((data) => console.log(data.users));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        const cookieHandler = {
+            setCookie(name, value, expirationDays = 365, path = '/'){
+                const now = new Date();
+                now.setTime(now.getTime() + expirationDays * 24*60*60*1000);// a setTime(), getTime() millisecundomot használ
+                const expires = now.toUTCString();
+                document.cookie = `${name}=${value}; expires=${expires}; path=${path}`;
+            },
+            getCookie(name){
+                const keyValuePairs = document.cookie       // "username=Kovacsics Kálmán; job=student"
+                    .split('; ')
+                    .find(cookie => cookie.startsWith(`${name}=`));  // "username=Kovacsics Kálmán"
+                return keyValuePairs? keyValuePairs.split('=')[1]: '';
+            },
+            checkCookie(name){
+                //const exists = cookieHandler.getCookie(name);
+                const exists = this.getCookie(name);    // szerintem ez is jó
+                //return exists? true: false;
+                return !!this.getCookie(name);          // és ez is jó :)
+            },
+            deleteCookie(name){
+                document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+            },
+        }
+
+        cookieHandler.setCookie('username', 'Kovacsics Kálmán');
+        cookieHandler.setCookie('job', 'student');
+        console.log(cookieHandler.getCookie('job'));        // "student"
+        console.log(cookieHandler.getCookie('jobb'));       // ""
+        console.log(cookieHandler.checkCookie('job'));      // true
+        cookieHandler.deleteCookie('job');
+
+    </script>
+</body>
+</html>

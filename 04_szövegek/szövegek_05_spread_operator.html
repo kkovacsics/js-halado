@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // spread operator: egy tömböt v. stringet elemire tudunk bontani
+        const message = 'message';
+        const charArray = [...message]; // a spread operator ( a ... ) elemire bontja és egy tömbbe teszi
+        console.log(charArray);         // ["m", "e", "s", "s", "a", "g", "e"]
+
+        const arr1 = [1,2,3,4,5];
+        const arr2 = [6,7,8,9,10];
+        console.log([...arr1, ...arr2]);    // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        // az egyik tömböt is, a másik tömböt is elemeire bontom, majd az elemeket összerakom egy új tömbbe
+        // a concat() metódus helyett egy szebb megoldás
+
+        // az arr1-ről csinálok egy deep copy-t, lemásolom a tömböt egy új tömbbe (nem referenciát másolok)
+        const copyArr1 = [...arr1];
+        console.log(copyArr1);  // [1, 2, 3, 4, 5]
+
+        // objektumok másolása
+        const user = {
+            firsName: 'John',
+            lastName: 'Doe'
+        }
+        const copyUser = { ...user };
+        console.log(copyUser);      // {firsName: "John", lastName: "Doe"}
+        
+        user.firsName = 'Jane';
+        console.log(copyUser);      // {firsName: "John", lastName: "Doe"} - a másolat nem változott
+        </script>
+</body>
+</html>

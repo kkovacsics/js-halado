@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+    Hozz létre két függvény kifejezést arrow functionnel! A függvények neve summation és subtraction. 
+    Mindegyik függvény két paramétert kap, ezek neve a és b. 
+    Amennyiben bármelyik paraméter hiányozna a függvény meghívásakor, 
+    úgy az alapértelemezett érték a 0 legyen.
+    A summation visszatér a két szám összegével, a subtraction visszatér a két szám különbségével.
+-->
+    <script>
+        'use strict';
+
+        const summation = (a=0, b=0) => a + b;
+        const subtraction = (a=0, b=0) => a - b;
+
+        console.log(summation(10, 20));     // 30
+        console.log(summation(10));     // 10
+        console.log(subtraction(10, 20));     // -10
+        console.log(subtraction(10));     // 10
+    </script>
+</body>
+</html>

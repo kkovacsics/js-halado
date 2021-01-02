@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        const pattern = /[a-z]/;    // tartalmazza-e az angol ABC kisbetűi közül egyet
+        const text = 'abraka dabra';
+        console.log(text.match(pattern));
+        
+        const pattern2 = /^[a-z]+$/;    // csak az angol ABC kisbetűiből áll
+        const text2 = 'abrakadabra';
+        console.log(text2.match(pattern2));
+
+        const pattern3 = /^[^a-z]+$/;    // nem az angol ABC kisbetűiből áll
+        const text3 = 'abrakadabra';
+        console.log(text2.match(pattern3));
+/*
+        [a-záéíóöőúüű] - a magyar ÁBC kisbetűi
+        [a-zA-Z0-9_] = \w   az angol ÁBC kis és nagybetűi és számok és alulvonás
+        [^a-zA-Z0-9_] = \W  nem a fentiek
+        [0-9] = \d      csak szám
+        [^0-9] = \D     nem szám
+*/
+    </script>
+</body>

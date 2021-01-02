@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        
+        let value = 1;
+        switch (value) {
+            case 0:
+                let result = 'nulla';
+                break;
+            case 1:
+                let result = 'egy'; // Uncaught SyntaxError: Identifier 'result' has already been declared
+                break;
+            default:
+                let result = 'null';
+                break;
+        }
+        // a teljes switch egy blokknak számít
+
+        // megoldás: a result-ot blokkon kívül kell deklarálni
+        let result;
+        switch (value) {
+            case 0:
+                result = 'nulla';
+                break;
+            case 1:
+                result = 'egy';
+                break;
+            default:
+                result = 'null';
+                break;
+        }
+        console.log(result);    // egy
+    </script>
+</body>
+</html>

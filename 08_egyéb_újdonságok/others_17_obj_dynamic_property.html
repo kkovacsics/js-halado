@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        // a property nevét dinamikusan rendeljük az obj-hoz
+        const keys = ['key1', 'key2', 'key3'];
+        const values = ['value1', 'value2', 'value3'];
+        
+        const myObject = {
+            [keys.shift()]: values.shift(),
+            [keys.shift()]: values.shift(),
+            [keys.shift()]: values.shift(),
+        }
+        console.log(myObject);  // {key1: "value1", key2: "value2", key3: "value3"}
+        
+        // ugyanez ciklussal
+        const keys1 = ['key1', 'key2', 'key3'];
+        const values1 = ['value1', 'value2', 'value3'];
+        const myObject1 = {};
+        keys1.forEach((key, index) => {
+            myObject1[key] = values1[index];
+        });
+        console.log(myObject1);  // {key1: "value1", key2: "value2", key3: "value3"}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        function getGrossPrice(netPrice, vatPercent, discountPercent){
+            return netPrice * (1 - discountPercent / 100) * (1 + vatPercent / 100);
+        }
+
+        console.log(getGrossPrice(1000, 27, 10));   // 1143
+
+        console.log(getGrossPrice());               // NaN
+
+        // default értékek régen
+        function getGrossPriceDefOld(netPrice, vatPercent, discountPercent){
+            var netPrice = netPrice || 1000;
+            var vatPercent = vatPercent || 27;
+            var discountPercent = discountPercent || 10;
+            return netPrice * (1 - discountPercent / 100) * (1 + vatPercent / 100);
+        }
+        console.log(getGrossPriceDefOld());         // 1143
+
+        // új módszer
+        function getGrossPriceDef(netPrice=1000, vatPercent=27, discountPercent=10){
+            return netPrice * (1 - discountPercent / 100) * (1 + vatPercent / 100);
+        }
+        console.log(getGrossPriceDef());            // 1143
+        // a paraméterek sorrendje kötött, emiatt nem tudom pl. csak a másodikat elhagyni
+        // vagy az utolsót hagyom el, vagy az utolsó kettőt, vagy mindhármat
+        console.log(getGrossPriceDef(2000));        // 2286
+        
+    </script>
+</body>
+</html>

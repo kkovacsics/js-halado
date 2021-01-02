@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*
+    What the ... hack is this?
+    - globális kódban a global obj, ami böngészőben a window
+    - egy obj metódusában (közvetlenül) az objektum maga
+    - fv-n belül, strict mód nélkül, a global obj, ami böngészőben a window
+    - fv-n belül, strict módban, undefined
+    - egy eventnél az elem maga, amin az esemény meghívódott
+    - bind(), call() és apply() metódusoknál bármi (mert én állítom be, hogy mi legyen a this)
+    - constructor fv-nél  az objektumpéldány, amit létrehozunk a segítségével
+    - az arrow fv a parent scope-ból örökli a this-t (az arrow function nem bindolja a this-t)
+*/
+        
+        console.log(this);      // a globális window object (strict mód ide v. oda)
+
+        (function(){
+            console.log(this);  // window object
+        })();
+
+        (function(){
+            'use strict';
+            console.log(this);  // undefined
+        })();
+
+    </script>
+</body>
+</html> 

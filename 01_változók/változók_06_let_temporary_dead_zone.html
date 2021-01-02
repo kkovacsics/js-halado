@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        
+        try {
+        console.log(sampleVariable); // ReferenceError: Cannot access 'sampleVariable' before initialization
+        } catch(e) {console.error(e)};
+        // van hoisting, de nem kap undefined-et, mint a var -nál
+
+        let sampleVariable = 'sample';
+        console.log(sampleVariable);            // sample
+
+        var sampleVariable2 = 'sample2';    // ez hozzá lesz kötve a globális window obj-hez
+        console.log(window.sampleVariable2);        // sample2
+
+        // a let-nél nincs ilyen kötés
+        console.log(window.sampleVariable);        // undefined
+
+    </script>
+</body>
+</html>

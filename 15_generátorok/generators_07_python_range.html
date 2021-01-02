@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        console.log('--------------------- Range -------------------');
+        // Python range: megadott tartományon belül számokat ad vissza mindig x-szel léptetve
+        function* range(start, end, step){
+            while(start<end){
+                yield start;
+                start += step;
+            }
+        }
+        
+        for(const value of range(10,200,3)){
+            console.log(value);
+        }
+        
+        console.log('--------------------- Search -------------------');
+        const hashtagPattern = /#\w+/g;
+        const text = 'This is a #sample which #contains a few #specific #hashtags.'
+
+        function* searchHashtags(text){
+            let match;
+            do{
+                match = hashtagPattern.exec(text); // 'g' flaggel a következő keresést az előző találattól folytatja
+                if(match){
+                    yield match[0];
+                }
+
+            }while(match);
+        }
+        for(const hashtag of searchHashtags(text)){
+            console.log(hashtag);
+        }
+
+
+    </script>
+</body>
+</html>

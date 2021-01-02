@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        function promise(value){
+            return new Promise(resolve => {
+                setTimeout(resolve, 2000, value * 2);
+            })
+        };
+
+        async function serial(){
+            const a = await promise(1);     // promise(1).then(), megkapjuk, amit a then() kapna
+            const b = await promise(2);
+            return a + b;
+        }
+
+        async function parallel(){
+            const promiseA = promise(10);   // itt csak elindítjuk a promise-t
+            const promiseB = promise(20);
+            return (await promiseA) + (await promiseB); // itt várjuk meg míg mindkettő fulfill lesz
+        }
+
+        serial().then(console.log);
+        parallel().then(console.log);
+
+    </script>
+</body>
+</html>

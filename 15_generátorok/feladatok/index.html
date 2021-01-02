@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+console.log('---------- index generátor ------------');
+/*
+Írj egy generátor függvényt, amit egyedi indexek generálására használsz! 
+Az index értéke kezdetben 1 legyen, és egyesével léptesd!
+*/
+function* indexGenerator(){
+    let index = 1;
+    while(true){
+        yield index++;
+    }
+}
+const index = indexGenerator();
+console.log(index.next().value);    // 1
+console.log(index.next().value);    // 2
+console.log(index.next().value);    // 3
+
+console.log('---------- 2 hatványai generátor ------------');
+/*
+Írj egy generátor függvényt, ami a 2 hatványait adja vissza!
+*/
+function* power2Generator(){
+    let index = 1;
+    while(true){
+        yield 2 ** index++;
+    }
+}
+const power2 = power2Generator();
+console.log(power2.next().value);    // 2
+console.log(power2.next().value);    // 4
+console.log(power2.next().value);    // 8
+
+console.log('---------- fibonacci négyzet ------------');
+/*
+Van egy előre megírt fibonacci generátor függvényed.
+A feladatod, hogy írj egy olyan generátor függvényt, 
+ami a fibonacci generátor által visszaadott értékekből visszaadja a kapott érték négyzetét!
+*/
+function *fibonacci() {
+    let a = 1;
+    let b = 1;
+    while( true ) {
+        [a, b] = [b, a+b];
+        yield b;
+    }
+}
+function* fibonacciPower2(){
+    const fibonacciGen = fibonacci();
+    while(true){
+        yield fibonacciGen.next().value**2;
+    }
+}
+const fibPo2 = fibonacciPower2();
+console.log(fibPo2.next().value);    // 4
+console.log(fibPo2.next().value);    // 9
+console.log(fibPo2.next().value);    // 25
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // all(): a promisok várják meg egymást
+
+        const cat = new Promise((resolve, reject) => {
+            setTimeout(() => resolve({
+                sound: 'miau',
+                loyal: false
+            }), 1000);
+        });
+
+
+        const dog = new Promise((resolve, reject) => {
+            setTimeout(() => resolve({
+                sound: 'vau',
+                loyal: true
+            }), 3000);
+        });
+
+        Promise
+            .all([cat, dog])        // itt adom meg a promise-okat amikre várunk
+            // ha az összes promise fullfilled lesz, akkor then()
+            .then((results) => {
+                const [cat, dog] = results;
+                console.log(cat, dog);
+            })
+            // ha bármelyik promise hibára fut, azonnal a catch() ágra kerülünk a rejected promise-val, 
+            // a többi promise-tól függetlenül
+            .catch((error) => {
+                console.error(error);
+            })
+
+
+    </script>
+</body>
+</html>

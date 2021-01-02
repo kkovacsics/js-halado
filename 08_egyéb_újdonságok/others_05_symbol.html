@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+/*
+    a JS 6. primitív típusa a Symbol 
+    Symbol esetén a new kulcsszót soha nem tesszük ki
+*/
+        const mySymbol = Symbol();
+        console.log(typeof mySymbol);   // symbol
+
+        // description megadás
+        const mySymbol2 = Symbol('mySymbol');   // lehet bármilyen szám v. string
+        const mySymbol3 = Symbol('mySymbol');
+        // két symbol soha nem lehet egyenlő, mert létrehozáskor a háttérben egy EGYEDI azonosító is létrejön
+        console.log(mySymbol2 == mySymbol3);    // false, pedig még a descriptoruk is ugyanaz
+
+        console.log(mySymbol.toString());       // Symbol()
+        console.log(mySymbol3.toString());      // Symbol(mySymbol) - mutatja a descriptort
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // generátor fv: bármikor szüneteltethetem a futását, majd vissza tudok térni ugyanoda, hogy fusson tovább
+        function* languages(){
+            console.log('Start');
+            yield 'php';
+            yield 'perl';
+            yield 'ruby';
+            console.log('End');
+        }
+
+        // ha a generátor fv lefut, a visszatérési értéke egy generátor obj, ami egy iterátor, 
+        // ami lehetőséget biztosít a belső adatok egymás utáni elérésére
+        // de a generátor fv valójában nem fut még le
+        const generatorObject = languages();
+        // a next() hatására lefut a generátor fv. az első yield-ig
+        console.log(generatorObject.next());    // Start, {value: "php", done: false}
+        console.log(generatorObject.next());    // {value: "perl", done: false}
+        console.log(generatorObject.next());    // {value: "ruby", done: false}
+        console.log(generatorObject.next());    // End, {value: undefined, done: true}
+    </script>
+</body>
+</html>

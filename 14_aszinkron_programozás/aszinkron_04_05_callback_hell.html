@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        function one(args, callback){
+            console.log('one', args);
+            callback && callback();
+        }
+        function two(args, callback){
+            console.log('two', args);
+            callback && callback();
+        }
+        function three(args, callback){
+            console.log('thre', args);
+            callback && callback();
+        }
+        function four(args, callback){
+            console.log('four', args);
+            callback && callback();
+        }
+        function five(args, callback){
+            console.log('five', args);
+            callback && callback();
+        }
+
+        // szinkron callback hell
+        one(1, function() {
+            two(2, function() {
+                three(3, function() {
+                    four(4, function() {
+                        five(5, function() {
+                        });
+                    });
+                });
+            });
+        });
+
+        // ugyanez sokkal egyszerűbben, ha egymás után meghívogatjuk az fv-ket egymás után
+        // persze ilyenkor ne legyen callback az fv-ben
+        console.log('------------ szebb ------------');
+        function caller(){
+            one(1);
+            two(2);
+            three(3);
+            four(4);
+            five(5);
+        }
+        caller();
+
+        // aszinkronnál más a helyzet, ez egy teljesen bevett elrendezés volt
+        function one1(args, callback){
+            setTimeout(function(){
+                callback();
+                console.log('one', args * 1);
+            }, 1000);
+        }
+        function two2(args, callback){
+            setTimeout(function(){
+                callback();
+                console.log('two', args * 2);
+            }, 3000);
+        }
+        function three3(args){
+            setTimeout(function(){
+                console.log('three', args * 3);
+            }, 1000);
+        }
+        one1(1, function() {
+            two2(2, function() {
+                three3(3);
+            });
+        });
+        /* a callback-et mindig az aszinkron művelet végén hívjuk meg
+            amikor az egyik végzett, jöhetett a következő
+            szépen egymás után futottak az aszinkron műveletek
+        */
+
+    </script>
+</body>
+</html>

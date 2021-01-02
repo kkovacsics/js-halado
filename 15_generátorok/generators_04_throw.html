@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        function* generatorFunction(){
+            try{
+                yield 1;
+            } catch(error) {
+                console.error(error);
+            }
+            yield 2;
+            yield 3;
+        }
+
+        const generatorObject = generatorFunction();
+        console.log(generatorObject.next());  // value: 1, done: false;
+        console.log(generatorObject.throw(new Error('Custom error')));  // a catch lekezeli a hibát, majd lefut egy implicit next(): value: '2', done: false;
+        console.log(generatorObject.next());  // value: 3, done: false;
+
+        // ha nem lenne catch, akkor a throw utáni yield-eket nem adná vissza, 
+        // mert a kezeletlen hiba megszakítja a JS futását
+
+    </script>
+</body>
+</html>

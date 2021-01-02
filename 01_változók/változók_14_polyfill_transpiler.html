@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // a polyfill egy olyan kód/kódrészlet, mely biztosítja számunkra azt a működést
+        // amelyet natív módon elvárnánk a böngészőtől
+
+        console.log(String.prototype.includes);
+        
+        // ha a böngésző nem ismeri, létrehozzuk
+        if (!String.prototype.includes) {
+            String.prototype.includes = function (search, start) {
+                'use strict';
+
+                if (search instanceof RegExp) {
+                    throw TypeError('first argument must not be a RegExp');
+                }
+                if (start === undefined) { start = 0; }
+                return this.indexOf(search, start) !== -1;
+            };
+        }
+        console.log('result:', 'Borabora'.includes('bora'));
+/*
+ha nem csak egy új metódust szeretnék írni, hanem egy teljesen új szintakszist is => transpiler
+A transpiler-ek olyan eszközök, amelyek egy adott nyelvben írt kódot átalakítanak egy másik nyelv ekvivalens kódjává.
+A JS esetében ez nem feltétlenül egy másik nyelvet, hanem a szabvány egy régebbi verzióját jelenti.
+Akkor hasznljuk, ha nemcsak új tulajdonságokat, metódusokat akarunk használni, hanem újfajta szintakszist is.
+Babeljs.io
+*/
+    </script>
+</body>
+
+</html>

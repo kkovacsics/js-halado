@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // implicit return
+        const arrowFunction1 = firstName => {};
+        console.log(arrowFunction1('John'));    // undefined, hiszen csak egy implicit return van
+
+        // explicit return
+        const arrowFunction2 = firstName => 'Hello '+firstName+'!';
+        console.log(arrowFunction2('John'));    // 
+
+        // return an object (helyette label)
+        const arrowFunction3 = firstName => {name: firstName};
+        console.log(arrowFunction3('John'));    // undefined
+        // a kapcsos zárójel itt nem az obj-t jelöli, hanem a fv törzsét
+        // így a name: nem egy property-t jelöl, hanem egy label-t
+
+        // return an object 1. megoldás
+        const arrowFunction4 = firstName => ({name: firstName});
+        console.log(arrowFunction4('John'));    // {name: "John"}
+
+        // return an object 2. megoldás
+        const arrowFunction5 = firstName => { return {name: firstName} };
+        console.log(arrowFunction5('John'));    // {name: "John"}
+
+
+    </script>
+</body>
+</html>

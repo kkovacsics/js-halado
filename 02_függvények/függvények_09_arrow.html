@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const add = function(a ,b){ return a + b };
+        // ugyan ez arrow fv-vel
+        const add2 = (a ,b) => a + b;
+        console.log(add2(10,20));    // 30
+
+/* arrow fv:
+    - nem kell a function kulcsszó
+    - ha csak 1 paraméter van nem kellenek a zárójelek ()
+    - szimpla visszatérési értéknél a kapcsos zárójelek és a return kulcsszó is elhagyható
+*/
+    </script>
+</body>
+</html>

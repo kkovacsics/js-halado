@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict;'
+
+        // hibakezelés
+        // resolve, reject : csak az egyik fog lefutni
+        const samplePromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if(false){
+                    resolve('Promise is fulfilled');
+                } else {
+                    reject(new Error('Promise error'));
+                }
+            }, 3000);
+        });
+
+        // szétválasztom a resolve-t és a reject-et
+        samplePromise.then(
+            (data) => console.log(data),  // ha az aszinkron művelet sikeresen lefutott,a resolve-t hívom meg és ez fut le
+        ).catch(
+            (error) => console.error(error) // ha hiba történt, a reject lesz meghívva, akkor ez fut le
+        );
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const dateNow = new Date(); // a pontos idő - 2020.12.23 11:40
+
+        // set metódusok (ezeknek is megvan az UTC megfelelőjük)
+        dateNow.setFullYear(2021);
+        dateNow.setMonth(10);      // november !!!
+        dateNow.setDate(21);
+        dateNow.setHours(10);
+        dateNow.setMinutes(10);
+        dateNow.setSeconds(10);
+        dateNow.setMilliseconds(10);
+        
+        console.log(dateNow);     // Sun Nov 21 2021 10:10:10 GMT+0100 (közép-európai téli idő)
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // példa: a felhasználói fiók fel van-e függesztve
+        function isSuspended(suspendedTimeInHours, whenSuspended){
+            if(!whenSuspended){ // ha nincs felfüggesztési idő, akkor nincs felfüggesztve
+                return false;
+            }
+            const now = new Date();
+            const elapsedTimeInHours = (now.getTime() - whenSuspended.getTime()) / 1000/60/60;
+            return !(elapsedTimeInHours > suspendedTimeInHours)? true: false;
+        }
+        console.log(isSuspended(12));       // false
+        console.log(new Date());            // Wed Dec 23 2020 12:02:20 GMT+0100 (közép-európai téli idő)
+        console.log(isSuspended(12, new Date('2020.12.23 10:00:00')));       // true
+        console.log(isSuspended(12, new Date('2020.12.23 00:00:00')));       // false, már letelt a 12 óra
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        console.log(sampleVariable);    // undefined
+
+        var sampleVariable = 'global';
+
+        // hoisting - a változó deklaráció felemelődik és inicializálódik undefined kezdőértékkel
+        // ugyanaz, mintha ezt írtam volna:
+        var sampleVariable2 = undefined;
+        console.log(sampleVariable2);    // undefined
+        var sampleVariable2 = 'global';
+
+/*  hoisting: a JS ezt automatikusan végzi
+    minden változó és fv deklaráció felemelődik
+    a var-ral létrehozott változó esetében undefined kezdőértékkel inicializálódik
+*/
+    </script>
+</body>
+</html>

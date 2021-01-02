@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // closure: ha egy fv-ben létrehozott változóhoz hozzáférünk a fv lefutása után is
+        // így a Garbage Collector nem tudja felszabadítani a helyét a fv lefutása után
+        function makeCounter(){
+            let counter = 0;
+            return function /*increaseCounter*/(){      // lehet anonim is
+                counter += 1;
+                console.log(counter);
+            }
+        }
+
+        const increaseCounter = makeCounter();
+        increaseCounter();      // 1
+        increaseCounter();      // 2
+        increaseCounter();      // 3
+
+        console.log('---------------- () ---------------');
+        // lefuttatom a fv-t, majd a visszatérési értéket is rögtön lefuttatom
+        makeCounter()();        // 1
+    </script>
+</body>
+</html>

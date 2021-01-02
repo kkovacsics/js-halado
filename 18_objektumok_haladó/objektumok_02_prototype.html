@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // hogyan lehet az objektumokhoz metódusokat hozzáadni?
+        function User(name, role){ 
+            this.name = name;
+            this.role = role;
+            this.whoAmI = function(){   // a metódus mindig létrejön, ha létrehozok egy új User obj-t
+                console.log(`I'm ${this.name}`);
+            }
+        }
+/*  
+metódus létrehozás prototype-al
+prototype tulajdonsága csak és kizárólag fv-knek van
+akkor van szerepe, ha a fv-t konstruktor fv-ként használom
+*/
+        User.prototype.whoAmI2 = function(){
+            console.log(`I'm ${this.name}`);
+        }
+        // a whoAmI2 metódus nem az objektumhoz fog tartozni, hanem a létrehozó fv-hez
+        // és csak egyszer jön létre
+
+        const johnDoe = new User('John Doe', 'user');
+        const janeDoe = new User('Jane Doe', 'admin');
+        console.log(johnDoe, janeDoe);// {name: "John Doe", role: "user"} {name: "Jane Doe", role: "admin"}
+        johnDoe.whoAmI2();
+        janeDoe.whoAmI2();
+        // A JS engine megnézi, hogy van-e az objektumnak whoAmI2 metódusa. NINCS
+        // ekkor végigmegy a prototype chain-en és ott keresi meg a whoAmI2 metódust
+        // így nem lesz whoAmI fv minden létrehozott objektumban, 
+        // csak egy helyen lesz letárolva, a constructor fv prototype objektumában
+
+    </script>
+</body>
+</html>

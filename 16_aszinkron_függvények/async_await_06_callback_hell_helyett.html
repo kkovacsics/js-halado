@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        function addOneTo(number){
+            let result = number + 1;
+            return new Promise((resolve, reject) => {
+                resolve(result);
+            })
+        }
+
+        async function main(){
+            const res1 = await addOneTo(5);
+            const res2 = await addOneTo(res1);
+            const res3 = await addOneTo(res2);
+            const res4 = await addOneTo(res3);
+            const res5 = await addOneTo(res4);
+            console.log(res5);                      // 10
+        }
+
+        main();
+
+    </script>
+</body>
+</html>

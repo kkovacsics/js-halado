@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const dateNow = new Date(); // a pontos idő
+        console.log(dateNow);   // Wed Dec 23 2020 11:06:30 GMT+0100 (közép-európai téli idő)
+
+        const date1 = new Date('December 23, 2020 11:07:00');// én adom meg az időt
+        console.log(date1);     // Wed Dec 23 2020 11:07:00 GMT+0100 (közép-európai téli idő)
+
+        const date2 = new Date('2020-12-23T11:09:00');// én adom meg az időt
+        console.log(date2);     // Wed Dec 23 2020 11:09:00 GMT+0100 (közép-európai téli idő)
+
+        const date3 = new Date(2020, 11, 23, 11, 11, 0);// ITT A HÓNAP 0-TÓL SZÁMOZÓDIK
+        console.log(date3);     // Wed Dec 23 2020 11:11:00 GMT+0100 (közép-európai téli idő)
+
+        console.log(dateNow.toJSON());     // 2020-12-23T10:15:10.459Z
+
+        // new kulcsszó nélkül a pontos időt adja meg sztring formátumban
+        const dateString = Date();  // a pontos idő sztring formátumban
+        console.log(dateString);    // Wed Dec 23 2020 11:17:26 GMT+0100 (közép-európai téli idő)
+    </script>
+</body>
+</html>

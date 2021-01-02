@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // a paraméter egy object
+        function getGrossPrice(param = {netPrice: 1000, vatPercent: 27, discountPercent: 10}){
+            return param.netPrice * (1 - param.discountPercent / 100) * (1 + param.vatPercent / 100);
+        }
+        console.log(getGrossPrice());            // 1143
+        
+        // ha csak a netPrice paramétert adom meg
+        console.log(getGrossPrice({netPrice: 2000}));   // NaN - miért? 
+        // mert van paraméter, csak hiányzik a vatPercent és a discountPercent
+
+        // a helyes default object megadás
+        function getGrossPriceDefObj({netPrice=1000, vatPercent=27, discountPercent=10} = {}){
+            return netPrice * (1 - discountPercent / 100) * (1 + vatPercent / 100);
+        }
+        console.log(getGrossPriceDefObj({netPrice: 2000}));            // 2286
+        // ez egyfajta object destructuring
+        
+    </script>
+</body>
+</html>

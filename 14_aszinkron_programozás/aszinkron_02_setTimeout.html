@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        if(false){
+            setTimeout(console.log, 1000, '1000');
+            setTimeout(console.log, 999, '999');
+            // konzol: 999, 1000 - ahogy vártuk
+        }
+
+        if(false){
+            setTimeout(console.log, 1, '1');
+            setTimeout(console.log, 0, '0');
+            // konzol: 1, 0 - mire a második végrehajtódik és WEB API-hoz kerül, az első már bekerült a task queue-ba
+        }
+
+        setTimeout(console.log, 1000, '1000');
+
+        for(let i=0; i<1000; i++)       // ez itt jókora késleltetés
+            console.log('wait');
+
+        setTimeout(console.log, 0, '0');    // mire ez átkerül a WEB API-hoz, 
+                                            // az előző setTimeout callback-ja már a task queue-ban van
+        // konzol: 1000*wait, 1000, 0
+
+    </script>
+</body>
+</html>

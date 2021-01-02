@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+/*
+a JS dinamikusan típusos nyelv, nem a változó, hanem az érték, ami típussal rendelkezik
+vannak tömbök, amelyek csak bizonyos típusú adatokat tartalmazhatnak
+
+Int8Array           -128 to 127	        1	8-bit two's complement signed integer	byte	int8_t
+Uint8Array	           0 to 255	        1	8-bit unsigned integer	                octet	uint8_t
+Uint8ClampedArray	   0 to 255	        1	8-bit unsigned integer (clamped)	    octet	uint8_t
+Int16Array	      -32768 to 32767	    2	16-bit two's complement signed integer	short	int16_t
+Uint16Array	           0 to 65535	    2	16-bit unsigned integer	unsigned        short	uint16_t
+Int32Array	 -2147483648 to 2147483647	4	32-bit two's complement signed integer	long	int32_t
+Uint32Array	           0 to 4294967295	4	32-bit unsigned integer	unsigned        long	uint32_t
+Float32Array   1.2×10-38 to 3.4×1038	4	32-bit IEEE floating point number (7 significant digits e.g., 1.234567)	unrestricted float	float
+Float64Array  5.0×10-324 to 1.8×10308	8	64-bit IEEE floating point number (16 significant digits e.g., 1.23456789012345)	unrestricted double	double
+BigInt64Array	  -2 -63 to 2 63-1	    8	64-bit two's complement signed integer	bigint	int64_t (signed long long)
+BigUint64Array	       0 to 2 64-1	    8	64-bit unsigned integer	bigint	uint64_t (unsigned long long)
+*/
+        // -128 .. +127; 11111111 .. 01111111
+        const signedIntEightArray = new Int8Array(4);  // megadhatom a méretet, vagy a tömb elemeit [1,2,3,4]
+        signedIntEightArray[0] = 12;
+        console.log(signedIntEightArray);   // [12, 0, 0, 0] - a nem inicializáltak 0-k lesznek
+        signedIntEightArray[1] = 128;       // ha túl nagy értéket adok meg, akkor körbe fordul
+        signedIntEightArray[2] = 129;
+        signedIntEightArray[3] = -129;
+        console.log(signedIntEightArray);   // [12, -128, -127, 127]
+
+        // clamped array, 0 .. 255
+        const unsignedIntEightClampedArray = new Uint8ClampedArray(3);
+        unsignedIntEightClampedArray[0] = 12;
+        unsignedIntEightClampedArray[1] = 1280;
+        unsignedIntEightClampedArray[2] = -1290;
+        console.log(unsignedIntEightClampedArray);   // [12, 255, 0] 
+        // a túl nagyból 255 lesz, a túl kicsiból 0
+    </script>
+</body>
+
+</html>

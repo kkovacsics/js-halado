@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // egyedi azonosító generálás
+        console.log('------------------- ID ---------------');
+        function* idGenerator(){
+            let id = 1;
+            while(true){    // végtelen ciklus, de mindig csak 1 ciklus fut le a next() hatására
+                yield id++;
+            }
+        }
+
+        const id = idGenerator();
+        console.log(id.next().value);   // 1
+        console.log(id.next().value);   // 2
+        console.log(id.next().value);   // 3
+
+        // Fibonacci sorozat - a következő szám az előző 2 összege: 1,1,2,3,5,8,13
+        console.log('------------------- Fibonacci ---------------');
+        function* fibonacci(current, next){
+            while(true){
+                next = next + current;
+                current = next - current;
+                yield next;
+            }
+        }
+
+        const fibo = fibonacci(1,1);
+        console.log(fibo.next());       // {value: 2, done: false}
+        console.log(fibo.next());       // {value: 3, done: false}
+        console.log(fibo.next());       // {value: 5, done: false}
+        console.log(fibo.next());       // {value: 8, done: false}
+
+        // a generátor fv-k nagyon alkalmasak bármilyen sorozat előállítására, 
+        // az egyik leghasznosabb használati pontjuk ez
+    </script>
+</body>
+</html>

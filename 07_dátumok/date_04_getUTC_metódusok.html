@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const dateNow = new Date(); // a pontos idő - 2020.12.23 11:40
+/*
+    getUTC metódusok - a greenwich-i időt mutatják
+    a normál get metódusok lokalizációtól függően más és más értékeket mutathatnak
+    a getUTC metódusok nem függenek a lokalizációtól
+*/
+        console.log('UTC year', dateNow.getUTCFullYear());     // 2020
+        console.log('UTC month', dateNow.getUTCMonth());       // 11 - eggyel kevesebb
+        console.log('UTC day of the week', dateNow.getUTCDay());  // 3 - a varárnap = 0
+        console.log('UTC day of the month', dateNow.getUTCDate());  // 23
+        console.log('UTC hour', dateNow.getUTCHours());  // 10 !!!
+        console.log('UTC minute', dateNow.getUTCMinutes());  // 40
+        console.log('UTC second', dateNow.getUTCSeconds());  // 12
+        console.log('UTC millisecond', dateNow.getUTCMilliseconds());  // 183
+        
+    </script>
+</body>
+</html>

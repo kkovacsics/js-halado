@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        // egy adott karakter halmazból az illeszkedés bármelyik karakter esetén teljesül
+        const pattern = /[abc]/g;    // a vagy b vagy c kakater legyen benne
+        const pattern2 = /^[abc]/;
+        const pattern3 = /[abc]$/;
+        const pattern4 = /^(ab|bc)/;    // ab -vel vagy bc -vel kezdődjön
+        const pattern5 = /^(ab|bc)$/;   // ab -vel vagy bc -vel kezdődjön és végződjön
+        const text = 'abraka dabra';
+        console.log(text.match(pattern));       // ["a", "b", "a", "a", "a", "b", "a"]
+        console.log(text.match(pattern2));      // ["a", index: 0, input: "abraka dabra", groups: undefined]
+        console.log(text.match(pattern3));      // ["a", index: 11, input: "abraka dabra", groups: undefined]
+        console.log(text.match(pattern4));      // ["ab", "ab", index: 0, input: "abraka dabra", groups: undefined]
+        console.log('bc'.match(pattern5));      // ["bc", "bc", index: 0, input: "bc", groups: undefined]
+
+    </script>
+</body>
+</html>

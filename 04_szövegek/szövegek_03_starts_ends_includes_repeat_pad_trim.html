@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // startsWidth(): a paraméterrel kezdődik-e a string
+        // megadhatnám a kezdő poziciót is, hogy honnan nézze
+        console.log('hello'.startsWith('hel'));                 // true
+        // endsWidth(): a paraméterrel végződik-e a string
+        // megadhatnám a hosszt is, hogy meddig nézze
+        console.log('hello'.endsWith('ll',4));                  // true
+        // includes(): a paraméter megtalálható-e a sztringben
+        // megadhatnám a kezdő poziciót is, hogy honnan nézze
+        console.log('hello'.includes('lo',3));                  // true
+        // repeat(): az adott sztringet megismétlem
+        console.log('hello'.repeat(3));                         // hellohellohello
+        // padStart(): feltölti adott karakterrel az elejét, hogy adott széles legyen az eredmény
+        // ha a sztring már hosszabb, akkor nem csinál semmit
+        console.log('12345'.padStart(10, '*'));                 // '*****12345'
+        // padEnd(): ugyanaz, csak hátulról tölti fel
+        console.log('12345'.padEnd(10, '*'));                   // '12345*****'
+        // trimStart(): csak az elejéről szedi le a white space karaktereket
+        console.log('   trim   '.trimStart());                   // 'trim   '
+        // trimEnd(): csak a végéről szedi le a white space karaktereket
+        console.log('   trim   '.trimEnd());                    // '   trim'
+    </script>
+</body>
+</html>

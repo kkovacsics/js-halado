@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const firstname = 'John';
+        const lastName = 'Doe';
+        const age = 30;
+        const sayMyName = 'My name is '+firstname+' '+lastName+', and I\'m '+age+' years old.';
+        console.log(sayMyName);
+
+        // stringek és változók összefűzésének leváltására hozták be a template literal-t
+        const sayMyName2 = `My name is ${firstname} ${lastName}, and I'm ${age} years old.`;
+        console.log(sayMyName2);
+
+        // a ${} között bármilyen JS kifejezés lehet, nemcsak változó
+    </script>
+</body>
+</html>

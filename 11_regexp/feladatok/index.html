@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+/*
+1.  Írj reguláris kifejezést Visa típusú bankkártyák bankszámlaszámának validálására! 
+    Teszteld is a megoldásod!
+2.  Írj reguláris kifejezést IP cím validálására! 
+    Teszteld is a megoldásod!
+3.  Írj reguláris kifejezést MAC cím validálására! 
+    Teszteld is a megoldásod!
+4.  Az előző három reguláris kifejezést és a validálást egy objekten belül készítsd el. 
+    Az objektnek legyen egy rules property-e ami objektmunban tárolja a mintákat, és egy validate metódusa, 
+    ami paraméterként kap egy string értéket, és azt, melyik mintát kell ráilleszteni. 
+    A visszatérési értéke egy boolean legyen, amnek az értéke attól függ, illeszkedik e a minta.
+*/
+        const Validator = {
+            rules: {
+                visa: /^(\d{4} ){3}\d{4}$/,      // 4111 1111 1111 1111
+                ip: /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/,           // 192.168.0.1
+                mac: /^([0-9a-f]{1,2}[.]){5}[0-9a-f]{1,2}$/       // 12.4f.ff.fa.0.1
+            },
+            validate(text, type){
+                return text.match(this.rules[type]) ? true: false;
+            }
+        }
+        console.log(Validator.validate('1234 1234 1234 1234', 'visa'));
+        console.log(Validator.validate('192.168.0.1', 'ip'));
+        console.log(Validator.validate('12.4f.ff.fa.0.11', 'mac'));
+    </script>
+</body>
+</html>

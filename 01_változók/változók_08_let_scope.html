@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        
+        // var: function scope
+        // let: block scope
+        {
+            let sampleVariable = 1;
+            console.log(sampleVariable);    // 1
+        }
+        // a blokkon kívül már nem látszik a sampleVariable változó
+        // ez strict mód nélkül is igaz
+        console.log(sampleVariable);    // Uncaught ReferenceError: sampleVariable is not defined
+
+    </script>
+</body>
+</html>

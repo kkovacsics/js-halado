@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="click-me">Click</button>
+    <script>
+        'use strict';
+
+        const btn = document.querySelector('.click-me');
+        btn.addEventListener('click', () => {
+            console.log('Listener 1');
+
+            setTimeout(console.log, 0, 'setTimeout 1');
+
+            Promise
+                .resolve('Promise 1')
+                .then(console.log);
+        })
+        btn.addEventListener('click', () => {
+            console.log('Listener 2');
+
+            setTimeout(console.log, 0, 'setTimeout 2');
+
+            Promise
+                .resolve('Promise 2')
+                .then(console.log);
+        })
+/* ha kattintunk, a konzolon:
+Listener 1
+Promise 1
+Listener 2
+Promise 2
+setTimeout 1
+setTimeout 2
+
+A promise-ok a MICROTASK queue-ba kerülnek
+Egy event loop során a TASK queue-ból csak 1 callback kerülhet a stack-be, ha a stack üres
+A MICROTASK queue prioritása nagyobb, és ráadásul onnan minden callback egyszerre átkerül a stack-be, ha a stack üres
+Ha a MICROTASK queue kiürült, csak utána kezdi el az EVENT LOOP üríteni a TASK queue-t
+*/
+    </script>
+</body>
+</html>

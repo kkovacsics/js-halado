@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+/*
+Alakítsd át az alábbi függvény úgy, hogy fetch-et használsz, és try catch-es kivételkezelést!
+function request(method, url){
+    const xhttp = new XMLHttpRequest();
+    xhr.onload = () => console.log('Request success')
+    xhr.onerror = () => console.error('Request error');
+    xhr.open(method, url);
+    xhr.send();
+}
+*/
+        async function request(method, url){
+            try {
+                const response = await fetch(url, {method: method});
+                if(!response.ok){
+                    throw new Error(response.status);
+                }
+                console.log('Request success');
+            } catch(e) {
+                console.error(`Request error: ${e}`);
+            }
+        }
+        console.log('-------------- 1. feladat ------------');
+        request('GET', '../../15_generátorok/data1.json');
+
+/*
+Írj egy delay nevű aszinkron függvényt, ami paraméterként kap egy számot, és egy callback functiont. 
+A paraméternek megfelelő milliszekundum után lefuttatja a második paraméterként kapott callbacket!
+*/
+        function delayFunction(delay, callback){
+            setTimeout(callback, delay);
+        }
+        console.log('-------------- 2. feladat ------------');
+        delayFunction(2000, () => console.log('callback is running'));
+
+/*
+Írj egy olyan async függvényt, ami paraméterként promise-okat (akármennyi lehet, számuk nem ismert) kap. 
+A visszatérési érték egy Promise legyen, abban az esetben, ha mindegyik Promise fullfilled lett, 
+egyébként egy Error object, az üzenet pedig: “Promise Error in functionName”. A functionName a függvény neve.
+*/
+        async function runPromises(...promises){
+            try {
+                for (let i = 0; i < promises.length; i++) {
+                    await promises[i];
+                }
+                return Promise.resolve('ok');
+            } catch(e) {
+                return new Error('Promise Error in runPromises');
+            }
+        }
+        console.log('-------------- 3. feladat ------------');
+        console.log(runPromises(Promise.resolve(1), Promise.reject(2), Promise.resolve(3)));
+
+    </script>
+    <!-- Az 14-es Async programming modul feladatait ültesd át fetch, async await-es megoldásra. -->
+    <script src="./main_14.js"></script>
+</body>
+</html>

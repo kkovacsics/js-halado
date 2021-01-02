@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const user = {
+            name: 'John Doe',
+            get firstName(){
+                return this.name.split(' ')[0];
+            },
+            set firstName(firstName){
+                this.name = `${firstName} ${this.name.split(' ')[1]}`;
+            }
+        }
+        // bár a get/set (getter/setter) metódus, egyszerű property-ként használom őket
+        console.log(user.firstName);    // John
+        user.firstName = 'Jane';
+        console.log(user.name);         // Jane Doe
+
+    /* getter, setter akkor hasznos, ha a property-ket nem csak egyszerűen beállítani akarom,
+        hanem még előtte vmi műveletet el akarok rajta végezni, pl. nagybetűsre állítom, ...
+    */
+
+
+    </script>
+</body>
+</html>

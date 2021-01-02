@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+/*
+    Set: arra használjuk, hogy egyedi értékeket tároljunk benne
+    hasonló a tömbhöz, de a tömbben egy érték többször is szerepelhet
+*/
+        const languages = new Set();
+        languages
+            .add('php')
+            .add('python')
+            .add('perl');
+        
+        languages.delete('php');        // ha van ilyen elem, akkor kitörli, ha nincs, nem jelez hibát
+        console.log(languages.size);    // 2
+        languages.clear();              // minden töröl
+        console.log(languages.size);    // 0
+
+        languages
+            .add('php')
+            .add('python')
+            .add('perl');
+
+        // a values egy SetIterator object-et ad vissza
+        console.log(languages.values());    // SetIterator {"php", "python", "perl"}
+        const values = languages.values();
+        // minden iterátor obj-nak van next() metódusa, ami minden hívásra egy obj-t ad vissza {value, done}
+        console.log(values.next());         // {value: "php", done: false}
+        console.log(values.next());         // {value: "python", done: false}
+        console.log(values.next());         // {value: "perl", done: false}
+        console.log(values.next());         // {value: undefined, done: true} - nincs több elem
+    </script>
+</body>
+</html>

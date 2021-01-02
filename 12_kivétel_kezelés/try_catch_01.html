@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        if(false){
+            console.log(bubu);  // Uncaught ReferenceError: bubu is not defined
+            console.log('end'); // ha exception volt, akkor ez már le sem fut
+        }
+
+        // hogyan lehet ezt kiküszöbölni?
+        try{
+            console.log(bubu);  // ReferenceError: bubu is not defined, de a program tovább fut
+        } catch(error) {
+            console.error(error);
+        }
+        console.log('end');
+
+
+        // error objektum
+        try{
+            console.log(bubu);  // ReferenceError: bubu is not defined, de a program tovább fut
+        } catch(error) {
+            console.error(error.message);   // bubu is not defined
+            console.error(error.name);      // ReferenceError
+            console.error(error.stack);     // részletesen leírja a hibát
+                                            // ez nem a szabvány része, de a legtöbb böngésző implementálta
+        }
+        console.log('end');
+
+    </script>
+</body>
+</html>

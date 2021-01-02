@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // constructor
+        function User(name){
+            this.name = name;
+        }
+        // a prototype-ban adom meg a getter/setter -eket
+        User.prototype = {
+            get firstName(){
+                return this.name.split(' ')[0];
+            },
+            set firstName(value){
+                this.name = `${value} ${this.name.split(' ')[1]}`;
+            },
+            get lastName(){
+                return this.name.split(' ')[1];
+            },
+            set lastName(value){
+                this.name = `${this.name.split(' ')[0]} ${value}`;
+            },
+            constructor: User,          // a constructor-t is helyre kell állítani
+        }
+        //User.prototype.constructor = User;      // ezt lehetett volna itt kint is megadni
+
+        const user = new User('Jane Doe');
+
+        // bár a get/set (getter/setter) metódus, egyszerű property-ként használom őket
+        console.log(user.firstName);    // Jane
+        console.log(user.lastName);     // Doe
+        user.firstName = 'John';
+        user.lastName = 'Doedoe';
+        console.log(user);         // John Doedoe
+
+    </script>
+</body>
+</html>

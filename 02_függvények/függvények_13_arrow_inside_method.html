@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // arrow fv használata metóduson belül
+
+        const user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            fullName(){
+                setTimeout(function(){
+                    console.log(this.firstName, this.lastName);
+                }, 3000)
+            }
+        }
+        user.fullName();  // undefined undefined - miért
+        // mert a setTimeout callback fv-je nem a user obj-n lesz meghívva, hanem a globális window obj-n
+        // a window-nak meg nincs firstName és lastName property-je
+
+        // viszont az arrow fv nem bindolja a this-t, hanem a szülő this-ét örökli
+        const user2 = {
+            firstName: 'John',
+            lastName: 'Doe',
+            fullName(){
+                setTimeout(() => console.log(this.firstName, this.lastName), 3000);
+            }
+        }
+        user2.fullName();  // John Doe
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // arrow fv mint obj metódus - SOHA NE HASZNÁLJUK
+        // az arrow fv nem bindolja a this-t, a this a szülő this értéke lesz
+
+        const user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            fullName(){
+                console.log(this.firstName, this.lastName);
+            }
+        }
+        user.fullName();  // John Doe - teljesen jó
+
+        // legyen a metódus arrow fv
+        const user2 = {
+            firstName: 'John',
+            lastName: 'Doe',
+            fullName: () => console.log(this.firstName, this.lastName)
+        }
+        user2.fullName();  // undefined undefined - mert ilyenkor a this a globális window obj lesz
+        // és window.firstName és window.lastName property-k nincsenek így értékük undefined lesz
+
+    </script>
+</body>
+</html>

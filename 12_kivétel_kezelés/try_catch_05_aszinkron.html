@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        // try-catch + aszinkron fv
+
+        const jsonData = `
+            {
+                "firstName": "John",
+                "lastName": "Doe",
+                "age": 30,
+            }
+        `;
+
+        const parse = (data) => JSON.parse(data);
+
+        // ha hiba van a parsolás közben, azt nem kapja el az én catch-em, mivel az aszinkron művelet közben lép fel
+        // a try a callback fv-re nem vonatkozik, hiszen az később hívódik meg
+        try {
+            setTimeout(() => {
+                const user = parse(jsonData);
+                console.log(user);
+            });
+        } catch (error) {
+            console.error('My catch block:', error);
+        }
+
+        // tegyük a try-t a callback fv-be, így már jó lesz
+        setTimeout(() => {
+            try {
+                const user = parse(jsonData);
+                console.log(user);
+            } catch (error) {
+                console.error('My catch block:', error);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

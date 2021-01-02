@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const users = [
+            {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            },
+            {
+                firstName: 'Kiss',
+                lastName: 'Gábor',
+                age: 41
+            },
+            {
+                firstName: 'Nagy',
+                lastName: 'Ilona',
+                age: 56
+            },
+        ];
+
+ 
+        // egy tömbön végigmegy, minden next()-re egy-egy elemet ad vissza
+        function* loop(arr){
+            for(const item of arr){
+                yield(item);
+            }
+        }
+
+        const items = loop(users);
+        console.log(items.next().value);  // az első elem: {firstName: "John", lastName: "Doe", age: 30}
+        console.log(items.next().value);  // a második elem: {firstName: "Kiss", lastName: "Gábor", age: 41}
+
+    </script>
+</body>
+</html>

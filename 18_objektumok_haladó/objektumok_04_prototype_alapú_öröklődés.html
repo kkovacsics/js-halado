@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        function Person(name){
+            this.name = name;
+        }
+        Person.prototype.sayHi = function(){
+            return 'Hi';
+        }
+
+        function User(name, role){ 
+            Person.call(this, name); // meghívom a Person fv-t, ami létrehozza name tulajdonságot
+            //this.name = name;      // ez ugyanazt csinálná? Szerintem igen :)
+            this.role = role;
+        }
+        // össze kell kapcsolni a User obj-t a Person obj-tel
+        // Object.create(): készít egy obj-t, aminek a prototype-ja a paraméterként kapott obj
+        User.prototype = Object.create(Person.prototype);
+        // de ezzel a User prototype-ját teljes mértékben felül írtuk
+        User.prototype.constructor = User;
+        // ezután jöhetnek az egyéb metódusok
+        User.prototype.whoAmI = function(){
+            return `I'm ${this.name}`;
+        }
+
+        const person1 = new Person('Person 1');
+        const person2 = new Person('Person 2');
+
+        const user1 = new User('User 1', 'user');
+        const user2 = new User('User 2', 'user');
+
+        console.log(person1, person2);
+        console.log(user1, user2);
+        // működik az öröklődés? sayHi() metódusa a Person objectnek van
+        console.log(user1.sayHi()); // Hi
+
+    </script>
+</body>
+</html>

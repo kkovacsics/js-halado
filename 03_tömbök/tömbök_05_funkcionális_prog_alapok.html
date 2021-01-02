@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="price-list">
+        <li>AOC C24G1 Monitor</li>
+        <li data-company="AMD">Sapphire Radeon RX 5700 XT 8GB Videókártya</li>
+        <li data-price="151.012,12">Gigabyte Geforce RTX 2060 Videókártya</li>
+        <li data-price="123.243,55">LG 34UC79G Monitor</li>
+        <li data-price="64.543,29">Gigabyta Geforce GTX 1060 Videókártya</li>
+        <li data-price="230.323,32">Acer Predator Monitor</li>
+        <li data-price="48.344,30">LG 25UM58-P Monitor</li>
+    </ul>
+
+
+    <script>
+        'use strict';
+        
+        // feladat: adjuk össze a monitorok árait
+
+        // melyeknek van megadva az ára
+        const dataPrice_ = document.querySelectorAll('#price-list li[data-price]');
+        // a querySelectorAll() nem egy tömböt ad vissza, hanem egy NodeList-et
+        // a legszebb megoldás, hogy tömb legyen belőle az Array.from() metódus
+        const dataPrice = Array.from(document.querySelectorAll('#price-list li[data-price]'));
+        // most már futtathatom rajta az Array metódusokat
+        // szűrjük le a monitorokat
+        const monitors = dataPrice.filter(item => item.textContent.includes('Monitor'));
+        // az árak nem JS formátumban vannak, 123.243,55 >> 123243.55, ehhez a map() nagyon kiváló
+        const monitorWithCorrectPrice = monitors.map(item => parseFloat(item.dataset.price.replace('.','').replace(',','.')));
+        // adjuk össze az értékeket
+        const sumOfMonitorsPrice = monitorWithCorrectPrice.reduce((prev, current) => prev+current);
+        console.log(sumOfMonitorsPrice);
+
+        // egyszerűsítés, methode chaining
+        const sumOfPrice = Array
+            .from(document.querySelectorAll('#price-list li[data-price]'))
+            .filter(item => item.textContent.includes('Monitor'))
+            .map(item => parseFloat(item.dataset.price.replace('.','').replace(',','.')))
+            .reduce((prev, current) => prev+current);
+        console.log(sumOfPrice);
+
+    </script>
+</body>
+
+</html>

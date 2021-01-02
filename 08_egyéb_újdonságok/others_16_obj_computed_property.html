@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        // a property nevét valamilyen változó értéke adja meg
+        const kulcs = 'key';
+        const ertek = 'value';
+        const myObject = {
+            [kulcs]: kulcs,
+            [`computed${kulcs}`]: 'computed'
+        }
+        console.log(myObject);  // {key: "key", computedkey: "computed"}
+
+    </script>
+</body>
+</html>

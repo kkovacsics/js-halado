@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const sampleVariable = 'value';
+
+        console.log(sampleVariable);    // value
+
+        // a const ugyanúgy blokk szintű, mint a let
+
+        // de nem adhatok neki új értéket
+        //sampleVariable = 'new value';   // Uncaught TypeError: Assignment to constant variable.
+
+        // DE - az object property már módosítható
+        const sampleObject = { 
+            firstName: 'John',
+            lastName: 'Doe'
+        }
+        sampleObject.firstName = 'Jane';
+        console.log(sampleObject);      // {firstName: "Jane", lastName: "Doe"} - MŰKÖDIK
+
+        // a const immutable binding-ot hoz létre - a változó és az értéke közötti kötés módosíthatatlan
+        // de ettől eltekintve a const és a let ugyanúgy viselkedik
+
+        // mindig használjunk const -ot, ha a változó értéke nem fog menet közben módosulni
+        // object-ek esetében szinte mindig használhatunk const-ot
+        
+    </script>
+</body>
+
+</html>

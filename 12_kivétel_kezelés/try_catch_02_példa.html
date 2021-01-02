@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        const jsonData = `
+            {
+                "firstName": "John",
+                "lastName": "Doe",
+                "age": 30,
+            }
+        `;
+
+        // a json parsolás közben lehet hiba, ha a json string nem helyes (pl. vessző a 30 után)
+        try{
+            const user = JSON.parse(jsonData);
+            console.log(user);
+        } catch(error) {
+            console.error(error);   // SyntaxError: Unexpected token } in JSON at position 126
+            // itt pl. adhatok hiba esetén default értéket a változónak
+            const user = {
+                firstName: 'Jean',
+                lastName: 'Doe',
+                age: 30
+            }
+        }
+        console.log('end');     // end, ez kiíródik, mert a try-catch miatt a program nem áll le
+    </script>
+</body>
+</html>

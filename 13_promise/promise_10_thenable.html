@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+
+        // thenable object: normál object, de speciális, mert van then() metódusa
+        const thenable = {
+            age: 30,
+            then(resolve, reject){
+                setTimeout(() => resolve(this.age *2), 1000);
+            }
+        }
+
+        Promise
+            .resolve('Success')     // rögtön meghívjuk a promise resolve metódusát
+            .then((result) => {
+                console.log(result);
+                return thenable;
+            })
+            .then((value) => console.log(value));  // ez a then() a thenable obj then()-je
+    </script>
+</body>
+</html>

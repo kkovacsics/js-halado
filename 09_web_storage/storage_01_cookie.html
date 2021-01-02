@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+/*
+cookie: 300 cookies in total, 4096 bytes per cookie, 20 cookies per domain
+de ez valójában böngésző függő (http://browsercookielimits.iain.guru/)
+meghatározott ideig maradnak meg vagy amíg a user ki nem törli őket
+*/
+    document.cookie = 'username=John Doe';
+//  ha nem adok meg érvényességi időt, akkor az alapesetben "Session" lesz, tehát amíg a böngésző fület be nem zárom
+//  path: amin keresztül a cookie elérhető, default értéke a jelenlegi útvonal
+
+    document.cookie = 'username2=John Doe; expires=Fri, 01 Jan 2021 12:00:00 UTC; path=/';
+
+//törlés: ne legyen érték, az érvényességi idő múltbéli idő legyen
+    document.cookie = 'username2=; expires=Thu, 01 Jan 1970 12:00:00 UTC; path=/';
+
+    </script>
+</body>
+</html>

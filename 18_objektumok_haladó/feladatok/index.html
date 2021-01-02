@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+/*
+Adott az alábbi objektum:
+const Walker = {
+    name: 'John Doe',
+    state: 'dead',
+    walk: function(speedInMph) {
+        console.log(this.name + ' the ' + this.state + ' walks with ' + speedInMph + ' mph!')
+    },
+    eat: function(foodName) {
+        console.log(this.name + ' the ' + this.state + ' eats ' + foodName + '!')
+    },
+    speak: function(sound){
+        console.log(this.name + ' the ' + this.state + ' says ' + sound + '!')
+    }
+}
+Alakítsd ár a következőket figyelembe véve: 
+- Legyen külön konstruktor függvény 
+- A metódusoknál a shorthand megadási módot használd 
+- Mindenhol template stringet használj 
+- A metódusok a prototype-on keresztül legyenek elérhetőek 
+- Minden metódus paraméternek legyen alapértelmezett értéke az alábbiak szerint: 
+    - speedInMph: 10 
+    - foodName: ‘meat’ 
+    - sound: ‘grrrrrr’ 
+- Legyen egy külön getter/setter,
+  amik a firstName-et, és a lastName-et módosítják, adják vissza a name-ből.
+*/  
+    function Walker(name, state){
+        this.name = name;
+        this.state = state;
+    };
+    Walker.prototype = {
+        constructor: Walker,
+        walk(speedInMph=10){
+            console.log(`${this.name} the ${this.state} walks with ${speedInMph} mph!`);
+        },
+        eat(foodName='meat') {
+            console.log(`${this.name} the ${this.state} eats ${foodName}!`);
+        },
+        speak(sound='grrrrrr'){
+            console.log(`${this.name} the ${this.state} says ${sound}!`);
+        },
+        get firstName(){
+            return this.name.split(' ')[0];
+        },
+        set firstName(value){
+            this.name = `${value} ${this.name.split(' ')[1]}`;
+        },
+        get lastName(){
+            return this.name.split(' ')[1];
+        },
+        set lastName(value){
+            this.name = `${this.name.split(' ')[0]} ${value}`;
+        },
+    }
+
+    const walker = new Walker('John Doe', 'living');
+    console.log(walker.firstName);
+    walker.firstName = 'Peter';
+    console.log(walker.lastName);
+    walker.lastName = 'Griffin';
+    walker.walk(3);
+    walker.eat();
+    walker.speak('funny');
+    </script>
+</body>
+</html>

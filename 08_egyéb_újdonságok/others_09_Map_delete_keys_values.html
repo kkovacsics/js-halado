@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+/*
+    Map: kulcs-value értékpárok tárolására
+    a Map kulcsai nemcsak stringek és symbolok lehetnek, hanem akár egy másik obj is
+    ha nagyon gyaran adunk hozzá vagy veszünk el belőle elemet, használjuk a Map-et, 
+    mert gyorsabb, mint a normál obj
+*/
+        const sampleMap = new Map();
+        sampleMap
+            .set('foo', 123)                // a set() olyan mint tömböknél a push()
+            .set('boo', 456)
+            .set('moo', 789);
+        sampleMap.delete('foo');
+        console.log(sampleMap.size);        // 2 - olyan, mint tömbnél a length
+
+        // kulcsok
+        console.log(sampleMap.keys());      // MapIterator {"boo", "moo"}
+        // értékek
+        console.log(sampleMap.values());    // MapIterator {456, 789}
+
+        sampleMap.forEach((value, key) => console.log('key :', key, 'value: ',value));
+            /*
+                key : boo value:  456
+                key : moo value:  789
+            */
+
+        // kiürítés
+        sampleMap.clear();
+        console.log(sampleMap.size);        // 0
+
+    </script>
+</body>
+</html>

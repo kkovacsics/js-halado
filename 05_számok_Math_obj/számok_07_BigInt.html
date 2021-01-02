@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // BigInt - a 7. primitív típus
+        // number, string, boolean, null, undefined, symbol, bigint
+        const max = Number.MAX_VALUE;
+        console.log(max ** 2);     // Infinity - (nem ábrázolható 64 biten ez a hatalmas szám)
+
+        const bigIntNumber = BigInt(max);
+        console.log(typeof bigIntNumber);   // bigint
+        try {
+        console.log(bigIntNumber ** 2); // Uncaught TypeError: Cannot mix BigInt and other types, use explicit conversions
+        } catch {};
+        // műveletet csak bigint-ek között lehet végezni
+        console.log(bigIntNumber ** 2n); // ez már lefut (a szám végére "n"-t kell írni, ettől lesz BigInt)
+        
+    </script>
+</body>
+</html>

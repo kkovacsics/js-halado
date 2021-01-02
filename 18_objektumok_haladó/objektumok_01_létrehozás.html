@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // objektumok létrehozása
+        const objLiteral = {};  // object literal
+
+        const objConstructor = new Object();    // konstruktor fv-vel 
+        // ez a megadási mód teljesen egyenértékű az object literal-lal
+
+        // saját constructor fv.
+        function User(name, role){  // konvenció: mindig nagybetűvel kezdődik
+            this.name = name;       // itt a this az objektum lesz, amit létrehozok vele
+            this.role = role;
+        }
+        // obj létrehozása
+        const johnDoe = new User('John Doe', 'user');
+        const janeDoe = new User('Jane Doe', 'admin');
+        console.log(johnDoe, janeDoe);// {name: "John Doe", role: "user"} {name: "Jane Doe", role: "admin"}
+    </script>
+</body>
+</html>

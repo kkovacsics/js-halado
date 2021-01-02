@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+/*
+Memory life cycle
+    - a memória terület lefoglalása (Allocate)
+    - a memória terület írása/olvasása (Use)
+    - a memória terület felszabadítása (Release - Garbage collection)
+
+Változó létehozása, értékadás
+    - egyedi azonosító létrehozása
+    - memória terület lefoglalása
+    - érték tárolűsa a lefoglalt memória területen
+
+Primitívek: a stack-ben tárolódnak
+    let sampleNumber = 42; => a Stackben lesz egy cím pl. 0x1005 és benne az érték, 42
+
+    a primitívek módosíthatatlanok, lehet nekik értéket adni, de az egy új területen fog tárolódni
+
+    sampleNumber = 84; => a sampleNumber-hez új cím lesz rendelve pl. 0x1006, benne az új érték 84
+                            a 0x1005-ös terület felszabadul (a Garbage Collector törölni fogja)
+
+    let newSampleNumber = sampleNumber; => a newSampleNumber-hez új terület lesz rendelve pl 0x1007
+                                            majd az új területre bemásolódik a 84
+                           
+    a const immutable bindingot hoz létre, nem lehet neki értéket adni
+    const constNumber = 42; => terület lefoglalás, majd az érték odamásolása, mint let-nél
+        de mindig ez a terület lesz hozzárendelve, nem kaphat új memória területet, így új értéket sem
+
+
+Objektumok: a heap-ben tárolódnak, a stack-ben csak a referenciát tároljuk
+    const sampleArray = [1,2,3,4,5];
+        a stackben kap egy memóriaterületet, mint a primitívek, 
+        de az érték egy referencia, egy pointer lesz a heap-re, ahol a tényleges értékek tárolódnak
+
+    const sampleArrayCopy = sampleArray;
+        ez is kap a stackben egy memóriaterületet, az értéke ugyanaz a referencia lesz, mint a sampleArray-é
+        tehát a heap ugyanazon területére fog mutatni
+        nem az érték fog másolódni, csak a referencia, lesz egy újabb pointer ugyanarra a területre
+        ha az egyiket módosítom, a másik is módosulni fog
+
+    sampleArray.push(6);
+    sampleArrayCopy => [1,2,3,4,5,6]
+
+Függvényeknél mindig érték szerinti paraméter átadás van, 
+de objektumoknál ez az érték valójában egy referencia (pointer)
+*/
+    </script>
+</body>
+
+</html>

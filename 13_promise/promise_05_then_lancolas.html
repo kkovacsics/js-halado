@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const users = [
+            {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            },
+            {
+                firstName: 'Kiss',
+                lastName: 'Gábor',
+                age: 41
+            },
+            {
+                firstName: 'Nagy',
+                lastName: 'Ilona',
+                age: 56
+            },
+        ];
+
+        function findUserByAge(age){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const user = users.find((user) => user.age === age);
+                    if(user)
+                        resolve(user);
+                    else
+                        reject(Error('Data not found'));    // Error() v. new Error() mindegy
+                }, 0);
+            });
+        }
+
+        findUserByAge(30)
+            .then((user) => {
+                user.firstName = user.firstName.toLocaleUpperCase();
+                return user;            // a következó then() ezt kapja paraméterként
+            })
+            .then((user) => {
+                console.log(user);
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const dateNow = new Date(); // a pontos idő
+        console.log(dateNow.toDateString());    // Wed Dec 23 2020
+        console.log(dateNow.toLocaleDateString('hu'));// 2020. 12. 23. - az adott lokalizációnak megfelelően
+        console.log(dateNow.toTimeString());    // 11:23:10 GMT+0100 (közép-európai téli idő)
+        console.log(dateNow.toLocaleTimeString('hu'));// 11:24:04 - az adott lokalizációnak megfelelően
+        console.log(dateNow.toJSON());      // 2020-12-23T10:25:48.311Z - JSON formátumban
+
+        console.log(Date.now());  // 1608719232280 - az aktuális idő, 1970.01.01 óta eltelt idő millisecundumban
+        console.log(Date.now()/1000/60/60/24/365);  // 51.01215597168316 - az 1970.01.01 óta eltelt évek száma
+
+    </script>
+</body>
+</html>

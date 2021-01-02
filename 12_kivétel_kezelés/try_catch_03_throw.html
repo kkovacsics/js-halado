@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+/*
+    JS-ben nincs multiple catch, csak 1 catch ág van
+    ha több féle hiba keletkezhet, azokat csak itt lehet lekezelni
+*/
+        const jsonData = `
+            {
+                "firstName": "John",
+                "age": 30
+            }
+        `;
+
+        try{
+            const user = JSON.parse(jsonData);
+            if(!user.firstName || !user.lastName || !user.age){
+                // throw: egyedi hibaüzenetek generálása
+                throw new ReferenceError('Missing property');   // én adom meg a message property-t
+            }
+            console.log(user);
+        } catch(error) {
+            if(error instanceof ReferenceError){
+                console.error('Custom error:', error.message); 
+            } else if (error instanceof SyntaxError){
+                console.error('Szintaktikai hiba'); 
+            } else {
+                console.error(error); 
+            }
+        }
+        console.log('end');     // end, ez kiíródik, mert a try-catch miatt a program nem áll le
+    </script>
+</body>
+</html>

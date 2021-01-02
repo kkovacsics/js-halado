@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+/*
+    aszinkron fv-ek azért vannak, hogy a promise-okat könnyebben tudjuk kezelni
+    a fetch is egy promise-ad vissza, tehát kezeljük a fetch-t aszinkron fv-vel
+    sokkal szebb és egyszerűbb
+*/
+        async function request(url, options = {}){
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();       // a json() is egy promise-t ad vissza
+                console.log(result.users);
+                // return result.users;  // ha visszadjuk az értéket, ügyeljünk rá, hogy ez egy promise lesz
+                                         // tehát a request().then() -re lesz szükségünk
+            } catch(error) {        // kötelező jelleggel mindig kezeljük a hibát is
+                console.error(error);
+            }
+        }
+
+        request("../13_promise/data.json");
+
+    </script>
+</body>
+</html>

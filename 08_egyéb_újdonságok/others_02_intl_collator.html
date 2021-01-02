@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+/*
+    Intl: Internationalization API
+    egy adott nyelvnek megfelelő pénz, dátum, számformátum használata
+    illetve az adott nyelvnek megfelelő ABC sorrend
+*/
+        const charList = ['ä', 'a', 'z'];
+        const germanCollator = new Intl.Collator('de');
+        const swedishCollator = new Intl.Collator('sw');
+
+        // a német nyelvnek megfelelően hasonlítja össze a karaktereket
+        console.log(charList.sort(germanCollator.compare));     // ["a", "ä", "z"]
+        // a svéd nyelvnek megfelelően hasonlítja össze a karaktereket
+        console.log(charList.sort(swedishCollator.compare));    // ["a", "z", "ä"]
+    </script>
+</body>
+</html>

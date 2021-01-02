@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const users = [
+            {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            },{
+                firstName: 'Jane',
+                lastName: 'Doe',
+                age: 18
+            },{
+                firstName: 'Peter',
+                lastName: 'Griffin',
+                age: 66
+            },{
+                firstName: 'Chris',
+                lastName: 'Griffin',
+                age: 24
+            }
+        ];
+
+        // find(): a feltételnek megfelelő ELSŐ elemet fogja visszaadni
+        // ha nincs ilyen, akkor undefined-et ad vissza
+        console.log(users.find(user => user.age>48));// {firstName: "Peter", lastName: "Griffin", age: 66}
+
+        // findIndex(): mint a find(), csak az elem indexét adja vissza
+        // ha nincs ilyen, akkor -1 -et ad vissza
+        console.log(users.findIndex(user => user.age>48));  // 2
+
+        // some(): van-e olyan elem, amelyik megfelel a feltételnek
+        // boolean-t ad vissza
+        console.log(users.some(user => user.age>48));  // true
+
+        // every(): minden elem megfelel-e a feltételnek
+        // boolean-t ad vissza
+        console.log(users.every(user => user.age>48));  // false
+
+    </script>
+</body>
+
+</html>

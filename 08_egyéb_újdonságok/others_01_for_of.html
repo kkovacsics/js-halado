@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        const numbers = [10,20,30,40,50];
+        numbers[9] = 100;               // emiatt lesznek undefined elemek a tömbben
+
+        // a for..in az indexeken v. property-ken megy végig
+        for(let key in numbers){        // for..in esetén mindig használjuk a hasOwnProperty() metódust
+            if(numbers.hasOwnProperty(key)) // az esetlegesen örökölt tulajdonságok nem kellenek
+                console.log(key);       // 1,2,3,4,9 - a tömb indexei
+        }
+
+        // a for..of az értékeken megy végig
+        for(let value of numbers){  // a for..of az üres elemek értékeit is listázza, mint a sima for
+            console.log(value);
+        }
+
+        // használhatjuk a kulcsok, indexek, property-k eléréséhez is
+        for(let key of Object.keys(numbers)){
+            console.log(key);
+        }
+
+    </script>
+</body>
+</html>

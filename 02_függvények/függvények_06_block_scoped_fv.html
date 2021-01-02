@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // a blokk scope-ú fv-k
+        {
+            function calculate(a, b){
+                return a + b;
+            }
+            console.log(calculate(1, 2));
+            {
+                function calculate(a, b){
+                    return a * b;
+                }
+                console.log(calculate(2, 3));
+            }
+            console.log(calculate(2, 3));
+        }
+        console.log(calculate(10, 20));
+        // 3 6 5 ReferenceError: calculate is not defined
+        // tehát blokkon kívül nem ismert a calculate() fv
+
+        // strict mód nélkül
+        // 3 6 5 30 - tehát blokkon kívül is elérem az (összeadó) calculate() fv-t
+
+    </script>
+</body>
+</html>

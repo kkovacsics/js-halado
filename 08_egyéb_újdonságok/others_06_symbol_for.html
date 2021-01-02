@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        // csak akkor hozzuk létre a Symbol-t, ha még nem létezik az adott description-nel
+        const id = Symbol.for('id');
+        console.log(id.description);   // id - ez nem csak a for-ral létrehozott symbol-nál működik
+        
+        // létezik egy globál symbol registry, ami tárolja az összes symbol-t és description-jét
+        // ha for-ral hozzuk létre, akkor először megnézi a registry-t, 
+        // ha még nincs akkor létrehozza, egyébként lekéri
+        const anotherId = Symbol.for('id'); // ua. az a descriptor
+        console.log(id === anotherId);      // true - tehát nem létrehozta, 
+                                            // hanem lekéri az előzőleg létrehozott symbol-t
+
+        // ---------------------------------------------------------------------------------------------------
+        const nameSymbol = Symbol.for('name');
+        console.log(Symbol.keyFor(nameSymbol));     // name - a key valójában a descriptor
+        console.log(nameSymbol.description);        // name
+
+    </script>
+</body>
+</html>

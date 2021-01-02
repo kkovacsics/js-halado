@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // isNaN() - Not_A_Number -e a paraméter vagy sem
+        // isNaN() - Number.isNaN() => nem ugyanazok
+        console.log('-------------- global isNaN() -------------');
+        // a globális isNaN() egy típuskonverziót végez a háttérben
+        console.log(isNaN(true));    // false - megpróbálja számmá konvertálni, ez sikerül, tehát false
+        console.log(isNaN('hello')); // true - megpróbálja számmá konvertálni, ez NEM sikerül, tehát true
+        console.log(isNaN(12));      // false - hiszen ez egy szám
+        console.log(isNaN(NaN));     // true - hiszen ez tényleg NaN
+        console.log(isNaN('NaN'));   // true - átkonvertálja számmá, NaN lesz, és az tényleg NaN
+
+        console.log('-------------- Number.isNaN() -------------');
+        // itt nincs típuskonverzió, csak akkor ad vissza true-t, ha a paraméter tényleg NaN
+        console.log(Number.isNaN(true));    // false
+        console.log(Number.isNaN('hello')); // false
+        console.log(Number.isNaN(12));      // false
+        console.log(Number.isNaN(NaN));     // true - hiszen ez tényleg NaN
+        console.log(Number.isNaN('NaN'));   // false
+
+    </script>
+</body>
+</html>

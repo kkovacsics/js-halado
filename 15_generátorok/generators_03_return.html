@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        function* generatorFunction(){
+            yield 1;            // ez csak szünetelteti a fv futását
+            return 'end';     // ez meg is szakítja
+            yield 2;
+            yield 3;
+        }
+
+        const generatorObject = generatorFunction();
+        console.log(generatorObject.next());  // value: 1, done: false;
+        console.log(generatorObject.next());  // value: 'end', done: true;   return értéket még megkapom
+        console.log(generatorObject.next());  // value: undefined, done: true;
+
+        // használhatom a generátor object return() metódusát is, a hatás hasonló, ezzel kívülről bármikor leállíthatom
+        function* generatorFunction1(){
+            yield 1;            // ez csak szünetelteti a fv futását
+            yield 2;
+            yield 3;
+        }
+
+        const generatorObject1 = generatorFunction();
+        console.log(generatorObject1.next());  // value: 1, done: false;
+        console.log(generatorObject1.return('end'));  // value: 'end', done: true;   return értékét megkapom
+        console.log(generatorObject1.next());  // value: undefined, done: true;
+
+    </script>
+</body>
+</html>

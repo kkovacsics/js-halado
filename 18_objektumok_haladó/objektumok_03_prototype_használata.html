@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        function User(name, role){ 
+            this.name = name;
+            this.role = role;
+        }
+        User.prototype.whoAmI = function(){
+            console.log(`I'm ${this.name}`);
+        }
+
+        const johnDoe = new User('John Doe', 'user');
+        const janeDoe = new User('Jane Doe', 'admin');
+        console.log(johnDoe, janeDoe);// {name: "John Doe", role: "user"} {name: "Jane Doe", role: "admin"}
+        johnDoe.whoAmI();
+        janeDoe.whoAmI();
+/*
+User {name: "John Doe", role: "user"}
+name: "John Doe"
+role: "user"
+__proto__:
+    whoAmI: ƒ ()
+    constructor: ƒ User(name, role)
+    __proto__:
+        constructor: ƒ Object()
+        hasOwnProperty: ƒ hasOwnProperty()
+        isPrototypeOf: ƒ isPrototypeOf()
+        propertyIsEnumerable: ƒ propertyIsEnumerable()
+        toLocaleString: ƒ toLocaleString()
+        toString: ƒ toString()
+        valueOf: ƒ valueOf()
+        __defineGetter__: ƒ __defineGetter__()
+        __defineSetter__: ƒ __defineSetter__()
+        __lookupGetter__: ƒ __lookupGetter__()
+        __lookupSetter__: ƒ __lookupSetter__()
+        get __proto__: ƒ __proto__()
+        set __proto__: ƒ __proto__()
+*/
+/*
+minden objektumnak van egy belső prototype tulajdonsága: [[Prototype]]
+a [[Prototype]] tulajdonságon keresztül valósul meg az öröklődés
+a [[Prototype]] tulajdonságot nem közvetlenül érjük el, hanem az __proto__ tulajdonság segítségével
+a __proto__ valójában egy setter/getter, amivel a belső [[Prototype]] tuladonságot tudjuk elérni
+*/
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // az aszinkron fv-k a promise-ok kezeléséhez nyújt egy egyszerűbb szintakszist
+        // az async fv visszatérési értéke mindig egy promise, még ha nem is látszik annak
+        async function one(){
+            return 1;       // ua mint Promise.resolve(1);
+        }
+
+        console.log(one());         // Promise {<fulfilled>: 1} -> tehát valóban promise
+        one().then(console.log);    // 1
+    </script>
+</body>
+</html>

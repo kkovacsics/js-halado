@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        function* first(){
+            yield 1;
+            yield 2;
+        }
+        
+        // a yield* egy másik generátor fv-t ad vissza
+        function* second(){
+            yield* first();
+            yield 3;
+            yield 4;
+            yield 5;
+        }
+
+        // for of looppal is ki tudom nyerni a generátor obj értékeit (mintha a next() -eket hivogatnám)
+        for(const item of second()){
+            console.log(item);     // konzol: 1, 2, 3, 4, 5 (csak a value értékeit szedi ki, a done nem lesz benne)
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        const user = {
+            create: function(){},
+            read: function(){},
+            update: function(){},
+            delete: function(){},
+        }
+        console.log(user);  // {create: ƒ, read: ƒ, update: ƒ, delete: ƒ}
+
+        // egyszerűsített megadás
+        const user1 = {
+            create(){},
+            read(){},
+            update(){},
+            delete(){},
+        }
+        console.log(user1);  // {create: ƒ, read: ƒ, update: ƒ, delete: ƒ}
+
+    </script>
+</body>
+</html>

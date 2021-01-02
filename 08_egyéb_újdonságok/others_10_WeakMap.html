@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        let key1 = {
+            name: 'John Doe'
+        }
+        let key2 = {
+            name: 'Jane Doe'
+        }
+
+        const sampleMap = new Map();
+        const sampleWeakMap = new WeakMap();
+
+        sampleMap.set(key1, 'dead');
+        sampleWeakMap.set(key2, 'dead');    // WeakMap-nél csak obj lehet a kulcs
+
+
+        console.log(sampleMap.get(key1));       // 'dead'
+        console.log(sampleWeakMap.get(key2));   // 'dead'
+/*
+    Miért hívjuk a WeakMap -et weak-nek?
+    Mert csak gyenge referenciaként tárolja az objektumot, amit kulcsként felhasználunk
+*/
+        key1 = null;
+        console.log(sampleMap.get(key1));       // undefined - tehát már nem látja közvetlenül
+        // de a forEach még megtalálja
+        sampleMap.forEach((value,key) => console.log(key, value));  // {name: "John Doe"} "dead"
+
+        // WeakMap-nél nincs forEach() metódus, így nincs mód a módosított kulcs elérésére
+        key2 = null;
+        console.log(sampleWeakMap.get(key2));   // undefined
+        // a Garbage Collector törölheti a kulcsot a memóriából, mert nincs mód az elérésére
+
+    </script>
+</body>
+</html>

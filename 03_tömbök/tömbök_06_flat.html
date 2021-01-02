@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // flat(): egy több dimenziós tömbből egy dimenziós tömböt készít
+
+ 
+        const matrix = [11,22,33,[44,55,[66,77]]];
+        console.log(matrix.flat());     // [11, 22, 33, 44, 55, [66,77]] - 1 dimenzióval kevesebb
+
+        // megadhatjuk paraméterként, hogy hány dimenziót akarunk kilapítani
+        console.log(matrix.flat(2));     // [11, 22, 33, 44, 55, 66, 77] - 2 dimenzióval kevesebb
+        // ha nem ismerjük a dimenziók számát
+        console.log(matrix.flat(Infinity)); // [11, 22, 33, 44, 55, 66, 77] - mindent kilapít
+
+    </script>
+</body>
+
+</html>

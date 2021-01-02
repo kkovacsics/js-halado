@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+/*  a JS alapvetően egy szálon fut és szinkron végrehajtású
+    DE vannak olyan műveletek, amelyek aszinkron fognak futni (ez nem azt jelenti, hogy több szálunk lesz)
+*/
+        console.log('start');
+        setTimeout(() => console.log(0),0);     // hiába 0ms, nem rögtön fog lefutni, hanem majd
+        setTimeout(() => console.log(1000),1000);
+        console.log('end');
+
+        // konzol: start, end, 0, 1000
+
+/* aszinkron futnak: event, timer, xhr
+  az indításuk után kikerülnek a JS alól (a stack-ből), és egy-egy  WEB API fogja kezelni őket
+  amikor lefutnak (kattintunk egy gombon, lejár a timer, az xhr kapott egy választ), 
+  akkor a callback fv. bekerül egy TASK QUEUE-ba
+  ha a STACK-ban nincs futó kódunk, akkor egy callback a task queue-ból bekerül a stackbe és le fog futni
+  EVENT LOOP: ha a WEB API végzett egy feladattal, akkor a callback bekerül a task queue-ba, ha a stack üres, 
+  akkor a callback bekerül a stack-be és lefut
+  Először mindig a szinkron utasítások futnak le, aszinkron csak akkor kerülhet leghamarabb sorra, ú
+  ha nincs futó szinkron kód részlet.
+  */
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const people = [
+            {
+                firstname: 'John',
+                lastName: 'Doe'
+            },
+            {
+                firstname: 'Jane',
+                lastName: 'Doe'
+            }
+        ]
+        // legenerálunk egy HTML template-t és beszúrju a body-ba
+/*
+    <div>
+        <p>John Doe</p>
+        <p>Jane Doe</p>
+    </div>
+*/
+        const template = `
+            <div>
+                ${people.map(person => `<p>${person.firstname} ${person.lastName}</p>`).join('')}
+            </div>
+        `;
+        // template literal-on belül template literal
+        document.body.innerHTML = template;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        var globalScope = 'global';
+        function sampleFunction(){
+            var globalScope = 'local';      // ugyanaz a név
+            console.log(globalScope);
+        }
+        sampleFunction();   // local
+        // a lokálisan létrehozott változó elfedi az ugyanolyan nevű globális változót
+        
+        console.log(globalScope);   // global
+        // a lokális változó nem látszik a globális névtérben
+
+    </script>
+</body>
+</html>

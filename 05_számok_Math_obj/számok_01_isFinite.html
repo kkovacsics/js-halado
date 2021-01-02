@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // isFinite() - egy szám véges-e vagy sem
+        console.log(Number.isFinite(Infinity)); // false
+        console.log(Number.isFinite(-Infinity)); // false
+        console.log(Number.isFinite(NaN));      // false
+
+        // ezeken kívűl bármilyen szám esetén true lesz
+        console.log(Number.isFinite(0));      // true
+
+    </script>
+</body>
+</html>

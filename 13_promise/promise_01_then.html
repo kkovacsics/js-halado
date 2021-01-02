@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict;'
+
+// promise: olyan objektum, melyek egy aszinkrom művelet állapotát hordozza magában
+// a promise egy executor callback-et kap, aminek 2 paramétere van a resolve (sikeres) és a reject (sikertelen)
+        const samplePromise = new Promise((resolve) => {
+            setTimeout(() => {                  // most ez az aszinkron művelet
+                // ha az aszinkron művelet sikeresen fut le, akkor a resolve-ot hívom meg
+                resolve('Promise is fulfilled');
+            }, 3000);
+        });
+
+        samplePromise.then((data) => console.log(data));    // data: az amit a resolve fv-nek átadtam
+        // a then valójában mindig egy promise-t fog visszaadni
+
+        /* promise állapotok
+            - pending: amíg az aszinkron művelet folyamatban van
+            - fulfill: ha az aszinkron művelet sikeresen lefutott
+            - reject: hiba esetén
+            - settled: ha az aszinkron művelet lefutott (fulfill, v. reject)
+        */
+    </script>
+</body>
+</html>

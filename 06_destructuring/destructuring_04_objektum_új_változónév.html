@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // hogyan tudunk egy obj-ból egyszerűen kiszedni értékeket más változó névvel
+        const person = {
+            firstName: 'John',
+            lastName: 'Doe',
+            age: 30,
+        }
+        const {firstName: f, lastName: l} = person;
+        console.log(f, l);       // John Doe
+
+    </script>
+</body>
+</html>

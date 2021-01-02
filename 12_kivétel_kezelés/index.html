@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Exception handling</h1>
+
+    <script>
+        'use strict';
+
+        // read json
+        const nameJson = localStorage.getItem('names');     // nincs ilyen, ezért null-t ad vissza
+        const names= JSON.parse(nameJson);
+        try {
+            names.forEach(element => {
+                console.log(element);
+            });
+        } catch(e) {
+            console.error('Error: ', e);
+        }
+
+        console.log('done');
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+/* fv. definíció:
+    - fv deklaráció
+    - fv kifejezés
+*/
+        // fv declaration
+        console.log(getGrossPriceFD(1000, 27)); // használhatom a fv-t a deklaráció előtt - hoisting
+
+        function getGrossPriceFD(netPrice, vatPercent){
+            return netPrice * (1 + vatPercent / 100);   // 1270
+        }
+
+        // fv expression
+//        console.log(getGrossPriceFE(1000, 27)); // ReferenceError: Cannot access 'getGrossPriceFE' before initialization
+        // tehát nem használhatom a kifejezés előtt
+        const getGrossPriceFE = function(netPrice, vatPercent){
+            return netPrice * (1 + vatPercent / 100);   
+        }
+        // itt már használhatom
+        console.log(getGrossPriceFE(1000, 27));     // 1270
+/*
+    mindegy mivel hozom létre a fv kifejezést (const, var, let)
+    a hoisting működik, de nem lesznek inicializálva, kivéve var esetén, ahol a változó undefined lesz
+    tehát fv-ként nem hívhatóak meg a fv kifejezés előtt
+*/
+
+    </script>
+</body>
+</html>

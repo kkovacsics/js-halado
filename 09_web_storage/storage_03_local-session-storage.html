@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+/*
+    a böngésző egy elkülönített könyvtárában kerül letárolásra
+    max 5MB vagy 10MB, böngésző és verzió függő
+    csak a tárolás idejében van különbség 
+     - session: amíg a böngészőfület be nem zárják  
+     - local: amíg mi vagy a user ki nem törli
+    csak kulcs-érték párokat lehet eltárolni, 
+    csak stringet lehet tárolni
+    akkor használjuk, ha nem túl érzékeny adatok tárolásáról van szó
+*/
+        localStorage.setItem('username', 'John Doe');
+
+        // objektum tárolás JSON-nal
+        localStorage.setItem('user', JSON.stringify({name: 'Jane Doe'}));
+        console.log(localStorage.getItem('user'));      // '{"name":"Jane Doe"}' - ez a JSON string
+        console.log(JSON.parse(localStorage.getItem('user')));  // {name: "Jane Doe"} - ez már objektum
+
+        console.log(localStorage.key(1));       // "user" - adott indexü kulcs lekérdezése
+
+        localStorage.removeItem('username');    // adott kulcsú elemet töröl
+        
+        localStorage.clear();                   // mindent töröl
+
+    </script>
+</body>
+</html>

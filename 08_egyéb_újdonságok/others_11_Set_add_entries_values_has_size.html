@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+/*
+    Set: arra használjuk, hogy egyedi értékeket tároljunk benne
+    hasonló a tömbhöz, de a tömbben egy érték többször is szerepelhet
+*/
+        const languages = new Set();
+        languages
+            .add('php')
+            .add('python')
+            .add('perl')
+            .add('perl');   // ezt már nem adja hozzá, de nem jelez hibát sem
+
+        console.log(languages.size);    // 3 - mint tömböknél a length
+        // a Set elemei
+        console.log(languages.entries()); // SetIterator {"php" => "php", "python" => "python", "perl" => "perl"}
+        // a Set értékei
+        console.log(languages.values());    // SetIterator {"php", "python", "perl"}
+        console.log(languages.has('php'));  // true
+    </script>
+</body>
+</html>

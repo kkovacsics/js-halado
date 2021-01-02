@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // callback: olyan fv, ami paraméterként van átadva egy másik fv-nek
+        const numericArray = [9,8,7,6,5];
+        // rendezzük sorba növekvő sorrendbe, ehhez kell egy callback fv
+        function compare(a, b){     // a tömb 2 eleme
+            return a-b;             // ha a különbség pozitív, cserélni kell
+        }
+        numericArray.sort(compare); // saját magát rendezi
+        console.log(numericArray);  // [5, 6, 7, 8, 9]
+
+        // higher order function: amelyek más fv-ekkel dolgoznak
+        
+    </script>
+</body>
+</html>

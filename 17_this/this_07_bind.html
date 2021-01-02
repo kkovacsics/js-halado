@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        const user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            speak(message){
+                console.log(this);      // user object
+                console.log(`${this.firstName} ${this.lastName} says ${message}`);
+            }
+        }
+
+        const speak = user.speak;
+        //speak('Hi');       // Uncaught TypeError: Cannot read property 'firstName' of undefined
+        // mert a speak fv közvetlenül a window alá került, és itt a this strict módban undefined
+
+        // megoldás
+        speak.call(user, 'Hi');// minden fv hívásnál megmondom, hogy mi legyen a this értéke, most legyen a user
+        // másik lehetőség
+        speak.apply(user, ['Hi']);  // itt az eredeti paramétereket tömbben kell átadni
+                                    // a call-nél vesszővel elválasztva
+                                    // csak ez a különbség a call és az apply között
+
+        const jane = {
+            firstName: 'Jane',
+            lastName: 'Doe',
+        }
+
+        // új fv-t hozok létre és megmondom, hogy mindegyik fv hívásnál mi legyen a this érték
+        const speakBind = user.speak.bind(jane);
+        speakBind('YEAH');
+/*
+    a call() és apply() nem hoz létre új fv-t, és minden hívásnál megadom a this-t 
+    a bind() új fv-t hoz létre, aminél én határozom meg, hogy mindegyik fv hívásnál mi legyen a this értéke
+*/
+    </script>
+</body>
+</html> 

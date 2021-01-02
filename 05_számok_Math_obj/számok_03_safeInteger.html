@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // minden szám 64 biten tárolódik, akár egész, akár tört
+        console.log(Number.MAX_VALUE);  // 1.7976931348623157e+308
+        
+        // a szabvány sajátosságai miatt vannak különböző számok, amik ugyanúgy vannak letárolva (bitre stimmelnek)
+        console.log(Number.MAX_SAFE_INTEGER);   //  9007199254740991 - eddig minden szám letárolva is különbözik
+        console.log(Number.MIN_SAFE_INTEGER);   // -9007199254740991 - az ennél kisebb számok már problémásak lehetnek
+
+        console.log(Number.isSafeInteger(42));  // true
+        console.log(Number.isSafeInteger(9007199254740991+1));  // false
+
+    </script>
+</body>
+</html>

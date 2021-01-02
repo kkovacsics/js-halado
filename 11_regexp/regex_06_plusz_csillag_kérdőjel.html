@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict';
+
+        // + - az előtte lévő karakter 1-szer, vagy többször szerepeljen
+        const pattern = /.a+/;    // bármilyen karakter, de utána "a" -nak kell lennie egyszer vagy többször
+        const text = 'baka';
+        console.log(text.match(pattern));
+        
+        // * - az előtte lévő karakter 0-szor, vagy többször szerepeljen
+        console.log('ab'.match(/.a*/));     // bármi után egy "a" 0-szor
+        
+        // ? - az előtte lévő karakter 0-szor, vagy 1-szer szerepeljen
+        console.log('ab'.match(/ba?/));     // b után egy "a" 0-szor
+    </script>
+</body>
+</html>

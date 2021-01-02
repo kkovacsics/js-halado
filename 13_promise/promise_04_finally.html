@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict;'
+
+        // hibakezelés
+        // resolve, reject : csak az egyik fog lefutni
+        const samplePromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const randomNumber = Math.floor(Math.random() * 11);    // 0 .. 10
+                if(randomNumber > 5){
+                    resolve('Promise is fulfilled');
+                } else {
+                    reject(new Error('Promise error'));
+                }
+            }, 0);
+        });
+
+        samplePromise
+            .then((data) => console.log(data))          // ha az aszinkron művelet sikeresen lefutott
+            .catch((error) => console.error(error))     // ha hiba történt, akkor ez fut le
+            // ha hiba (fullfill), ha nem (reject) a finally mindig lefut
+            .finally(() => console.log('settled'))      // az aszinkron művelet lefutott, azaz a promise settled lett
+    </script>
+</body>
+</html>

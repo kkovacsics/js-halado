@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // eseményen belül mi lesz a this?
+
+        const eventThisSample = {
+            create(){
+                // itt a this a button object-re mutat, tehát ez nem jó
+                const template = '<button onclick="this.handleClick()">Click me</button>';
+                // a fenti sorban amikor az esemény bekövetkezik, a this a button object-re fog mutatni
+                // tehát ez nem jó
+                document.body.insertAdjacentHTML('beforeend', template);
+
+                // az esemény bekövetkezésekor a this az lesz ami kiváltja az eseményt, tehát a button
+                const template1 = '<button onclick="console.log(this)">Click me 1</button>';
+                document.body.insertAdjacentHTML('beforeend', template1);
+                
+                // ez lesz a jó
+                const template2 = '<button onclick="eventThisSample.handleClick()">Click me 2</button>';
+                document.body.insertAdjacentHTML('beforeend', template2);
+            },
+            handleClick(){
+                console.log('clicked');
+            }
+        }
+        eventThisSample.create();
+    </script>
+</body>
+</html>

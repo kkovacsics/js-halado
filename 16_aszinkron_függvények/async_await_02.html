@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // az await-tet csak async fv belül használhatjuk
+        // az async await valójában csak egy egyszerűsített szintaxis a new Promise, then... részekre. 
+        async function one(){
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(resolve, 1000, 1);
+            });
+            const result = await promise;// várd meg a promise-t, amíg resolve lesz, majd hívd meg a then() -jét 
+            console.log(result);         // majd írd ki a konzolra
+            return result;           // promise-t ad vissza, mert az aszinkron fv visszatérési értéke mindig promise
+        }
+
+        one().then(console.log);     // ez is kiírja az 1-et a konzolra
+    </script>
+</body>
+</html>

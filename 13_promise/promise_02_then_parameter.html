@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict;'
+
+        // hibakezelés
+        // resolve, reject : csak az egyik fog lefutni, a kettő együtt sohasem
+        const samplePromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if(false){
+                    resolve('Promise is fulfilled');// akkor hívjuk meg, ha az aszinkron művelet sikeresen lefutott
+                } else {
+                    reject('Promise error');// hiba esetén hívom meg
+                }
+            }, 3000);
+        });
+
+        samplePromise.then(
+            (data) => console.log(data),        // ha az aszinkron művelet sikeresen lefutott
+            (error) => console.error(error)     // ha hiba történt, akkor ez fut le
+        );
+    </script>
+</body>
+</html>

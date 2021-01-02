@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // var-ral létrehozott változók hatóköre
+        var globalScope = 'global';
+        // ezt a változót elérhetem a kódban bárhol
+        function sampleFunction(){
+            console.log(globalScope);
+        }
+        sampleFunction();   // global
+
+
+        function sampleFunction2(){
+            var localScope = 'local';
+            console.log(localScope);
+        }
+        sampleFunction2();  // local
+
+        // a localScope változót csak fv-n belül érjük el
+        console.log(localScope);    // Uncaught ReferenceError: localScope is not defined
+
+        // a var kulcsszóval létrehozott változó function scope-ú változó
+        // csak fv-en belül érhető el, ill. globálisan létrehozott változónál globálisan
+
+    </script>
+</body>
+</html>

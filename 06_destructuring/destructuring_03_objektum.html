@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // hogyan tudunk egy obj-ból egyszerűen kiszedni értékeket
+        const person = {
+            firstName: 'John',
+            lastName: 'Doe',
+            age: 30,
+        }
+        const {firstName, lastName} = person;
+        console.log(firstName, lastName);       // John Doe
+
+        // ha olyan nevet adok meg, amilyen property-je az obj-nak nincs, akkor undefined-et kapok
+        const {veznev, age} = person;
+        console.log(veznev, age);               // undefined 30
+
+    </script>
+</body>
+</html>
