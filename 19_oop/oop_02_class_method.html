@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+/*
+        function User(name, role){
+            this.name = name;
+            this.role = role;
+        }
+        User.prototype.whoAmI = function(){
+            console.log(`I'm ${this.name}`);
+        }
+        const johnDoe = new User('John Doe', 'user');
+        const janeDoe = new User('Jane Doe', 'admin');
+        console.log(johnDoe, janeDoe);// {name: "John Doe", role: "user"} {name: "Jane Doe", role: "admin"}
+        johnDoe.whoAmI();
+        janeDoe.whoAmI();
+*/        
+        // ugyanez, az új szintakszissal
+        class User {
+            constructor(name, role){
+                this.name = name;
+                this.role = role;
+            }
+            whoAmI(){           // a metódusok a háttérben a prototype-joz lesznek hozzárendelve
+                console.log(`I'm ${this.name}`);
+            }
+        }
+
+        // a használat is ugyanaz
+        const johnDoe = new User('John Doe', 'user');
+        const janeDoe = new User('Jane Doe', 'admin');
+        console.log(johnDoe, janeDoe);// {name: "John Doe", role: "user"} {name: "Jane Doe", role: "admin"}
+        johnDoe.whoAmI();
+        janeDoe.whoAmI();
+
+    </script>
+</body>
+</html>

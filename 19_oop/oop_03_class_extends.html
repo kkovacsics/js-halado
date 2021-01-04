@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+/*
+       function Person(name){
+            this.name = name;
+        }
+        Person.prototype.sayHi = function(){
+            return 'Hi';
+        }
+        function User(name, role){ 
+            Person.call(this, name); // meghívom a Person fv-t, ami létrehozza name tulajdonságot
+            this.role = role;
+        }
+        User.prototype = Object.create(Person.prototype);
+        User.prototype.constructor = User;
+        User.prototype.whoAmI = function(){
+            return `I'm ${this.name}`;
+        }
+
+        const person1 = new Person('Person 1');
+        const person2 = new Person('Person 2');
+        const user1 = new User('User 1', 'user');
+        const user2 = new User('User 2', 'user');
+        console.log(person1, person2);
+        console.log(user1, user2);
+        console.log(user1.sayHi()); // Hi
+*/
+
+        class Person {
+            constructor(name){
+                this.name = name;
+            }
+            sayHi() {
+                return 'Hi';
+            }
+        }
+        class User extends Person {     // extends: honnan örököl
+            constructor(name, role){
+                super(name); // super: ez az ősosztály constructor-a (ha az egér felette, mutatja, hogy Person)
+                this.role = role;
+            }
+            whoAmI(){
+                return `I'm ${this.name}`;
+            }
+        }
+
+        // a használat is ugyanaz
+        const person1 = new Person('Person 1');
+        const person2 = new Person('Person 2');
+        const user1 = new User('User 1', 'user');
+        const user2 = new User('User 2', 'user');
+        console.log(person1, person2);
+        console.log(user1, user2);
+        console.log(user1.sayHi()); // Hi
+
+    </script>
+</body>
+</html>

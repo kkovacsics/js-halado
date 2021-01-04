@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+/*
+        function User(name){
+            this.name = name;
+        }
+        User.prototype = {
+            get firstName(){
+                return this.name.split(' ')[0];
+            },
+            set firstName(value){
+                this.name = `${value} ${this.name.split(' ')[1]}`;
+            },
+            get lastName(){
+                return this.name.split(' ')[1];
+            },
+            set lastName(value){
+                this.name = `${this.name.split(' ')[0]} ${value}`;
+            },
+            constructor: User,          // a constructor-t is helyre kell állítani
+        }
+
+        const user = new User('Jane Doe');
+        console.log(user.firstName);    // Jane
+        console.log(user.lastName);     // Doe
+        user.firstName = 'John';
+        user.lastName = 'Doedoe';
+        console.log(user);         // John Doedoe
+*/
+        class User {
+            constructor(name){
+                this.name = name;
+            }
+            get firstName(){
+                return this.name.split(' ')[0];
+            }
+            set firstName(value){
+                this.name = `${value} ${this.name.split(' ')[1]}`;
+            }
+            get lastName(){
+                return this.name.split(' ')[1];
+            }
+            set lastName(value){
+                this.name = `${this.name.split(' ')[0]} ${value}`;
+            }
+        }
+        const user = new User('Jane Doe');
+        console.log(user.firstName);    // Jane
+        console.log(user.lastName);     // Doe
+        user.firstName = 'John';
+        user.lastName = 'Doedoe';
+        console.log(user);         // John Doedoe
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+/*  statikus metódus: olyan metódus, ami nem egy objektum példányon hívható meg
+    hanem csak és kizárólag class-en keresztül
+    Kis helper fv-k, amiken belül nem használjuk a this-t
+*/
+        class User {
+            constructor(name){
+                this.name = name;
+            }
+            speek1(message){
+                return `Says: ${message}`;
+            }
+            static speek2(message){     // ha nem használjuk benne a this-t, akkor tegyük statikussá
+                return `Static says: ${message}`;
+            }
+        }
+        const user = new User('John Doe');
+        console.log(user.speek1('Hi!'));     // Says: Hi!
+        // a static fv-t csak a class-en keresztül érhetem el
+        console.log(User.speek2('Hi!'));    // Static says: Hi!
+
+    </script>
+</body>
+
+</html>

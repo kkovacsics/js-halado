@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+// a JS-ben alaphelyzetben minden publikus láthatóságú
+// privát láthatóság: csak az adott objektumon belül érhető el
+// ezt jelenleg leginkább csak a Chrome+Opera+Edge támogatja (https://caniuse.com/)
+        class User {
+            name = 'John Doe';
+            static isAGod = false;
+            #isADeveloper = true;       // ekkor privát láthatóságú class field lesz
+            logAPrivateFiledValue(){
+                console.log(this.#isADeveloper);
+            }
+            test(){
+                return `Test user ${this.name}`;
+            }
+            static speek(message){
+                return `Static says: ${message}`;
+            }
+        }
+        const user = new User();
+        user.logAPrivateFiledValue();  // true
+        console.log(user.#isADeveloper);// SyntaxError: Private field '#isADeveloper' must be declared in an enclosing class
+        // tehát kívülről, közvetlenül nem érem el
+    </script>
+</body>
+
+</html>

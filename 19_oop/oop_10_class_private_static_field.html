@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // private és static kombinálása
+        class User {
+            name = 'John Doe';
+            static isAGod = false;
+            #isADeveloper = true;       // ekkor privát láthatóságú class field lesz
+            static #isTired = true;     // private static class field
+            logAPrivateFieldValue(){
+                console.log(this.#isADeveloper);
+            }
+            logAPrivateStaticFieldValue(){
+                console.log(User.#isTired);// nem a this-en hanem a User-en keresztül érem el, hiszen static
+            }
+            test(){
+                return `Test user ${this.name}`;
+            }
+            static speek(message){
+                return `Static says: ${message}`;
+            }
+        }
+        const user = new User();
+        // nem érhető el kívülről
+        //user.#isTired;  // SyntaxError: Private field '#isTired' must be declared in an enclosing class
+        user.logAPrivateStaticFieldValue();     // true
+    </script>
+</body>
+
+</html>

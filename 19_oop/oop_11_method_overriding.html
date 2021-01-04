@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // hogyan lehet egy szülő osztályban definiált metódust a gyermekosztályban felülírni
+        class Car {
+            #speed = '0 km/h';
+
+            set speed(value) {
+                this.#speed = `${value} km/h`;
+            }
+            logActualSpeed(){
+                console.log(`Actual speed: ${this.#speed}`);
+            }
+        }
+
+        class SportCar extends Car {
+            logActualSpeed(){               // ezzel felülírtuk a szülőosztály metódusát
+                super.logActualSpeed();     // de meg is hívhatom
+                console.log('This is a sportcar.');
+            }
+        }
+
+        const ferrari = new SportCar();
+        ferrari.speed = 300;
+        ferrari.logActualSpeed();   // Actual speed: 300 km/h
+                                    // This is a sportcar.
+
+    </script>
+</body>
+
+</html>

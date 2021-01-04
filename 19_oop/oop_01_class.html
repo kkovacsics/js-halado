@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // class kulcsszó: egyedi obj megadása egyszerűbben
+        // van class kulcsszó, de nincsenek osztályok
+        // csak a szintaktika lett kicsit egyszerűbb
+
+        // eddig így adtuk meg:
+/*        function User(name, role){
+            this.name = name;
+            this.role = role;
+        }
+*/        
+        // most így: (de a háttérben ugyan az történik)
+        class User {
+            constructor(name, role){
+                this.name = name;
+                this.role = role;
+            }
+        }
+
+        // a használat is ugyanaz
+        const johnDoe = new User('John Doe', 'user');
+        const janeDoe = new User('Jane Doe', 'admin');
+        console.log(johnDoe, janeDoe);// {name: "John Doe", role: "user"} {name: "Jane Doe", role: "admin"}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        class Person {
+            constructor(name) {
+                this.name = name;
+            }
+            sayHi() {
+                return 'Hi';
+            }
+        }
+        class User extends Person {     // extends: honnan örököl
+            constructor(name, role) {
+                super(name); // super: ez az ősosztály constructor-a (ha az egér felette, mutatja, hogy Person)
+                this.role = role;
+            }
+            whoAmI() {
+                return `I'm ${this.name}`;
+            }
+            sayHi() {               // ugyanaz a név, mint a szülő osztálynál
+                const result = super.sayHi();   // meg tudom hívni a szülő metódusát is
+                return `User says ${result}!`;
+            }
+        }
+
+        // a használat is ugyanaz
+        const person1 = new Person('Person 1');
+        const person2 = new Person('Person 2');
+        const user1 = new User('User 1', 'user');
+        const user2 = new User('User 2', 'user');
+        console.log(person1, person2);
+        console.log(user1, user2);
+        console.log(user1.sayHi());// User says Hi - természetesen a gyermek osztály metódusa fog lefutni
+
+    </script>
+</body>
+
+</html>

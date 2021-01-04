@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+// ha van olyan property, aminek nem kell minden obj példánynál léteznie, elég egyszer letárolni
+// ehhez használható a static kulcsszó, mint metódusnál
+// persze ekkor a class-hoz fog tartozni, nem az obj páldányhoz
+        class User {
+            name = 'John Doe';      // ezt hívjuk class field-nek, az adott obj-hoz tartoznak
+            static isAGod = false;
+            test(){
+                return `Test user ${this.name}`;
+            }
+            static speek(message){
+                return `Static says: ${message}`;
+            }
+        }
+        const user = new User();
+        console.log(User.speek('Hi!'));     // Says: Hi!
+        console.log(user.test());
+        console.log(User.isAGod);           // false
+
+    </script>
+</body>
+
+</html>
